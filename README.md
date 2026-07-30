@@ -49,9 +49,9 @@ Roughly:
 
 ## Patterns so far
 
-Six entries, and the errors are not distributed randomly:
+Seven entries, and the errors are not distributed randomly:
 
-- **Four of six had the disconfirming evidence already visible** — in a
+- **Five of seven had the disconfirming evidence already visible** — in a
   screenshot, in a status file being written continuously, one command away.
   These are not knowledge gaps. They are failures to check a claim against
   material already in hand.
@@ -62,5 +62,11 @@ Six entries, and the errors are not distributed randomly:
   apparatus where an observation would do. These cost the most and are hardest to
   catch, because nothing is technically false.
 
-The single most useful habit implied: before asserting a cause, ask what would be
-true if the claim were false, and whether that is visible right now.
+- **One is about time specifically**, and it recurred four times in a single
+  session: durations stated as though measured when they were borrowed human
+  idiom. Nothing elapses between turns, so there is no internal clock to check
+  against — only actual clocks, which went unread.
+
+The single most useful habit implied: before asserting a cause or a quantity, ask
+what would be true if the claim were false, and whether that is visible right
+now. In five of seven cases, it was.
