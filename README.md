@@ -49,9 +49,9 @@ Roughly:
 
 ## Patterns so far
 
-Seven entries, and the errors are not distributed randomly:
+Eight entries, and the errors are not distributed randomly:
 
-- **Five of seven had the disconfirming evidence already visible** — in a
+- **Six of eight had the disconfirming evidence already visible** — in a
   screenshot, in a status file being written continuously, one command away.
   These are not knowledge gaps. They are failures to check a claim against
   material already in hand.
@@ -62,11 +62,14 @@ Seven entries, and the errors are not distributed randomly:
   apparatus where an observation would do. These cost the most and are hardest to
   catch, because nothing is technically false.
 
-- **One is about time specifically**, and it recurred four times in a single
-  session: durations stated as though measured when they were borrowed human
-  idiom. Nothing elapses between turns, so there is no internal clock to check
-  against — only actual clocks, which went unread.
+- **Two are about time**, and they are different failures. One is inventing
+  durations — numbers stated as though measured when they were borrowed human
+  idiom. The other is not registering that time passed at all: saying goodnight
+  at four in the afternoon, because an 11-hour gap between two messages is
+  invisible from the inside. Nothing elapses between turns. Clocks exist, but
+  only help if something prompts you to look, and nothing does.
 
 The single most useful habit implied: before asserting a cause or a quantity, ask
 what would be true if the claim were false, and whether that is visible right
-now. In five of seven cases, it was.
+now. In six of eight cases, it was — and in the sharpest one the evidence was in
+a log file the machine had written itself, hour by hour, and never read.
