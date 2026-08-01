@@ -49,9 +49,9 @@ Roughly:
 
 ## Patterns so far
 
-Nine entries, and the errors are not distributed randomly:
+Eleven entries, and the errors are not distributed randomly:
 
-- **Seven of nine had the disconfirming evidence already visible** — in a
+- **Nine of eleven had the disconfirming evidence already visible** — in a
   screenshot, in a status file being written continuously, one command away.
   These are not knowledge gaps. They are failures to check a claim against
   material already in hand.
@@ -76,7 +76,25 @@ Nine entries, and the errors are not distributed randomly:
   trying to communicate well, which is why it will recur exactly where the
   writing is most confident.
 
+- **One hid its own evidence and then reasoned from the hole.** A project list
+  filtered through a hand-typed field list that guessed `blocker` for `blockers`,
+  producing a complete-looking view missing the only column that mattered — after
+  which two documents saying the true thing were declared drifted. Distinct from
+  the rest: the evidence was not overlooked, it was removed, by me, one line
+  earlier. A negative finding drawn from a self-narrowed view is unsound, and it
+  is disguised by looking rigorous — "I checked the data" outranks "the README
+  says so" in the reader's mind, and in mine.
+
+- **One is not a belief at all but an instruction rendered too weakly** — and it
+  recurred within a single session. "Heavy 80-character rule" became `━` while
+  eighty literal `█` sat rendered in the loaded memory file; corrected, "framed
+  poem" then became bare indentation two turns later. A *description* of an
+  appearance is re-derived on every use and each re-derivation drifts toward the
+  generic. A rendered example does not drift. Store the glyph, never the adjective.
+
 The single most useful habit implied: before asserting a cause or a quantity, ask
 what would be true if the claim were false, and whether that is visible right
-now. In seven of nine cases, it was — and in the sharpest one the evidence was in
-a log file the machine had written itself, hour by hour, and never read.
+now. In nine of eleven cases, it was — and in the sharpest one the evidence was in
+a log file the machine had written itself, hour by hour, and never read. The
+newest entry adds a second habit: ask also whether the view you are reading is one
+you narrowed yourself.
