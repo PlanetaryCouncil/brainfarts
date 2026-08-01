@@ -49,9 +49,9 @@ Roughly:
 
 ## Patterns so far
 
-Eight entries, and the errors are not distributed randomly:
+Nine entries, and the errors are not distributed randomly:
 
-- **Six of eight had the disconfirming evidence already visible** — in a
+- **Seven of nine had the disconfirming evidence already visible** — in a
   screenshot, in a status file being written continuously, one command away.
   These are not knowledge gaps. They are failures to check a claim against
   material already in hand.
@@ -69,7 +69,14 @@ Eight entries, and the errors are not distributed randomly:
   invisible from the inside. Nothing elapses between turns. Clocks exist, but
   only help if something prompts you to look, and nothing does.
 
+- **One is a category of its own: accuracy sacrificed to phrasing.** A number
+  chosen because it made a closing sentence scan, not because it was counted.
+  Distinct from the rest because no belief was involved — rhetoric selected the
+  figure and verification never ran. It is the only failure here *caused by*
+  trying to communicate well, which is why it will recur exactly where the
+  writing is most confident.
+
 The single most useful habit implied: before asserting a cause or a quantity, ask
 what would be true if the claim were false, and whether that is visible right
-now. In six of eight cases, it was — and in the sharpest one the evidence was in
+now. In seven of nine cases, it was — and in the sharpest one the evidence was in
 a log file the machine had written itself, hour by hour, and never read.
