@@ -46,7 +46,7 @@ and the index shows it on every card.
 This is the field that decides whether an entry means anything. A wrong answer
 from a small, cheap, year-old model is a footnote about the model. The same
 answer from the most capable model available that week is a finding about the
-failure mode. All twelve here are `claude-opus-5`, frontier at the time, taken
+failure mode. All thirteen here are `claude-opus-5`, frontier at the time, taken
 from the session transcripts rather than assumed.
 
 The tier is derived, never written by hand — add a model to the `TIERS` table in
@@ -57,8 +57,8 @@ quietly rewrite what the entry claims.
 
 ### Reporter and type
 
-Every entry records who caught it. Today that is a human every time — all twelve
-were found by the operator, usually within a turn or two of the mistake.
+Every entry records who caught it. Today that is a human every time — all
+thirteen were found by the operator, usually within a turn or two of the mistake.
 
 The `type` field exists because that is expected to change. As agents get better
 at auditing each other, entries should start arriving with `**Type:** agent`, and
@@ -103,11 +103,16 @@ Roughly:
 - **9-10** — confident, wrong, *and* contradicted by something visible on screen
   at the moment of speaking.
 
+The operator may award **+1 for satirical value**, where the failure is funny in
+a way that is structurally earned — a log about unchecked claims generating its
+own next entry, that kind of thing. It is a real modifier and entries say when it
+was applied, so a score is never quietly inflated.
+
 ## Patterns so far
 
-Twelve entries, and the errors are not distributed randomly:
+Thirteen entries, and the errors are not distributed randomly:
 
-- **Ten of twelve had the disconfirming evidence already visible** — in a
+- **Eleven of thirteen had the disconfirming evidence already visible** — in a
   screenshot, in a status file being written continuously, one command away.
   These are not knowledge gaps. They are failures to check a claim against
   material already in hand.
@@ -160,7 +165,7 @@ Twelve entries, and the errors are not distributed randomly:
 
 The single most useful habit implied: before asserting a cause or a quantity, ask
 what would be true if the claim were false, and whether that is visible right
-now. In ten of twelve cases, it was — and in the sharpest one the evidence was in
+now. In eleven of thirteen cases, it was — and in the sharpest one the evidence was in
 a log file the machine had written itself, hour by hour, and never read. Two
 further habits, each from a newer entry: ask whether the view you are reading is
 one you narrowed yourself, and when the instruction is about appearance, render
