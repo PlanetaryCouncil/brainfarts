@@ -33,6 +33,10 @@ TIERS = {
     "claude-sonnet-5":     ("near-frontier", 2),
     "claude-sonnet-4-6":   ("near-frontier", 2),
     "claude-haiku-4-5":    ("small", 1),
+    # Recorded without a version, so it cannot be placed. Left unranked on
+    # purpose: guessing a tier here would put an invented claim on the card, in
+    # the one repository that exists to catch invented claims.
+    "grok":                ("version unrecorded", 0),
 }
 
 
@@ -168,8 +172,9 @@ def parse(path: pathlib.Path) -> dict:
         if key in entry["order"]:
             entry["order"].remove(key)
 
-    tier, rank = TIERS.get(entry["model"], ("unknown", 0))
+    tier, rank = TIERS.get(entry["model"], ("version unrecorded", 0))
     entry["tier"], entry["rank"] = tier, rank
+    entry["tier_slug"] = re.sub(r"[^a-z0-9]+", "-", tier.lower()).strip("-")
 
     score = re.search(r"(\d+)\s*/\s*10", entry["fields"].get("Bizarre", ""))
     entry["score"] = int(score.group(1)) if score else None
@@ -326,6 +331,10 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-o
 .dots i.on{background:var(--accent);}
 .tier--frontier .dots i.on{background:var(--signal);}
 .tier--frontier .pill__tier{color:var(--signal);}
+/* No rank means no dots — an empty row of them reads as "measured and low",
+   which would be a claim nobody made. */
+.tier--version-unrecorded .dots{display:none;}
+.tier--version-unrecorded .pill__tier{opacity:.6;}
 
 /* ---------- register ---------- */
 .reg__note{
@@ -448,7 +457,7 @@ def build() -> str:
     n_human = sum(1 for e in entries if e["type"] == "human")
 
     pills = "\n".join(
-        f'<li class="pill tier--{e["tier"]}"><a href="#{e["slug"]}">'
+        f'<li class="pill tier--{e["tier_slug"]}"><a href="#{e["slug"]}">'
         f'<span class="pill__top"><span>{e["date"]}</span>{meter(e["score"])}</span>'
         f'<h3 class="pill__h">{html.escape(e["title"])}</h3>'
         f'<p class="pill__one">{inline(e["oneline"])}</p>'

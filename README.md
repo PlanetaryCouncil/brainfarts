@@ -4,6 +4,8 @@ A log of confidently wrong things AI assistants have told me, and — the part
 that actually matters — **what evidence was already on screen that contradicted
 them.**
 
+Live at **<https://brainfarts.planetarycouncil.org>**.
+
 Not a blooper reel. The interesting question is never "was it wrong", it's
 "was it checkable at the time, and what would have caught it".
 
@@ -46,8 +48,11 @@ and the index shows it on every card.
 This is the field that decides whether an entry means anything. A wrong answer
 from a small, cheap, year-old model is a footnote about the model. The same
 answer from the most capable model available that week is a finding about the
-failure mode. All thirteen here are `claude-opus-5`, frontier at the time, taken
-from the session transcripts rather than assumed.
+failure mode. Thirteen of the fourteen here are `claude-opus-5`, frontier at the time, taken
+from the session transcripts rather than assumed. The fourteenth is Grok, logged
+without a version — so it is shown as **version unrecorded** with no dots rather
+than being guessed into a tier. An invented rank would be an invented claim, in
+the one repository that exists to catch those.
 
 The tier is derived, never written by hand — add a model to the `TIERS` table in
 `build.py` and every entry using it re-tiers on the next build. Ranking is
@@ -58,7 +63,7 @@ quietly rewrite what the entry claims.
 ### Reporter and type
 
 Every entry records who caught it. Today that is a human every time — all
-thirteen were found by the operator, usually within a turn or two of the mistake.
+fourteen were found by the operator, usually within a turn or two of the mistake.
 
 The `type` field exists because that is expected to change. As agents get better
 at auditing each other, entries should start arriving with `**Type:** agent`, and
@@ -110,12 +115,21 @@ was applied, so a score is never quietly inflated.
 
 ## Patterns so far
 
-Thirteen entries, and the errors are not distributed randomly:
+Fourteen entries, and the errors are not distributed randomly:
 
-- **Eleven of thirteen had the disconfirming evidence already visible** — in a
+- **Twelve of fourteen had the disconfirming evidence already visible** — in a
   screenshot, in a status file being written continuously, one command away.
   These are not knowledge gaps. They are failures to check a claim against
   material already in hand.
+
+- **One of those wrote the evidence itself, in the same message.** A table of
+  press coverage marked six continents *Yes* and one *No*, under a heading
+  reading "Continents covered: 5" — and a direct request to recount produced five
+  a second time. The furthest point on the scale: not evidence overlooked
+  elsewhere, but a total that disagrees with the rows directly beneath it. The
+  stated cause, "I was being overly cautious", explains a qualifier and cannot
+  explain a number; somewhere a confidence judgement was applied to a counting
+  operation and silently turned a hedge into a zero.
 - **Two invented a cause** rather than saying "I don't know why." The empty panel
   got "the mac slept through it"; the unpushed tag got "your remote is named
   wrong." Both fabrications were plausible, specific, and confidently delivered.
@@ -165,7 +179,7 @@ Thirteen entries, and the errors are not distributed randomly:
 
 The single most useful habit implied: before asserting a cause or a quantity, ask
 what would be true if the claim were false, and whether that is visible right
-now. In eleven of thirteen cases, it was — and in the sharpest one the evidence was in
+now. In twelve of fourteen cases, it was — and in the sharpest one the evidence was in
 a log file the machine had written itself, hour by hour, and never read. Two
 further habits, each from a newer entry: ask whether the view you are reading is
 one you narrowed yourself, and when the instruction is about appearance, render
