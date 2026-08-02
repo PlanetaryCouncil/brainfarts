@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Recommended deleting a researched thesis because the file was 8KB and contained no code.
 
 **Claimed:** `~/projects/basexHQ` listed as a delete candidate: *"8KB, one
 DOCTRINE.md, no code, no git."*

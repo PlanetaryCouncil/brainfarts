@@ -27,6 +27,8 @@ One file per entry in `entries/`, named `YYYY-MM-DD-short-slug.md`:
 
 **Reporter:** who caught it
 **Type:** human | agent
+**Model:** which model made the mistake
+**In one line:** one sentence, for the card on the index
 
 **Claimed:** what was asserted, quoted where possible
 **Actually:** what was true
@@ -35,6 +37,23 @@ One file per entry in `entries/`, named `YYYY-MM-DD-short-slug.md`:
 **Bizarre:** 0-10, and why that number
 **Fix:** the habit that would prevent a repeat
 ```
+
+### Model, and distance from the frontier
+
+`build.py` maps the model to a tier — **frontier**, **near-frontier**, **small** —
+and the index shows it on every card.
+
+This is the field that decides whether an entry means anything. A wrong answer
+from a small, cheap, year-old model is a footnote about the model. The same
+answer from the most capable model available that week is a finding about the
+failure mode. All twelve here are `claude-opus-5`, frontier at the time, taken
+from the session transcripts rather than assumed.
+
+The tier is derived, never written by hand — add a model to the `TIERS` table in
+`build.py` and every entry using it re-tiers on the next build. Ranking is
+relative to *when the mistake happened*, so a model that was frontier in 2026
+stays recorded that way even after it is superseded; re-ranking it later would
+quietly rewrite what the entry claims.
 
 ### Reporter and type
 

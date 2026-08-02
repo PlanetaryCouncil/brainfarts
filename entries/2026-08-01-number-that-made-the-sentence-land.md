@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Wrote “three places” because the sentence scanned well. The answer was two on every reading.
 
 **Claimed:** *"2,384 lines of writing that existed on one laptop and nowhere else
 now exist in three places."*

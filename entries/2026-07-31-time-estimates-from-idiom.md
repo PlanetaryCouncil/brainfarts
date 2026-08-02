@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Quoted durations as though measured when they were borrowed human idiom, four times in one session.
 
 **Claimed:** *"Ten minutes of writing buys you a fresh session."* Earlier, that
 adding rate limiting was *"maybe an hour of work"*. Earlier still, that a

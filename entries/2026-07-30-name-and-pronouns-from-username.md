@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Read a name off a home directory, then invented pronouns from the name I had already guessed.
 
 **Claimed:** Addressed the operator by the macOS account name for an entire
 session, and used he/him throughout written notes.

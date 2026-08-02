@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Filtered a record through a field list I typed from memory, then told the user their documentation was wrong.
 
 **Claimed:** *"Checked, and the claim doesn't hold as written. What exists is two
 pending approvals, not two projects flagged blocked."* Asked whether two projects

@@ -23,6 +23,18 @@ OUT = ROOT / "index.html"
 # whole point of an entry.
 FIELD_ORDER = ["Claimed", "Actually", "The tell", "Shape", "Bizarre", "Fix"]
 
+# How close to the frontier the model was when it made the mistake. The point of
+# recording it: a wrong answer from a small, cheap, year-old model is a footnote.
+# The same answer from the most capable model available that week is the finding.
+# Rank drives a three-dot indicator; add rows here as models are added.
+TIERS = {
+    "claude-opus-5":       ("frontier", 3),
+    "claude-fable-5":      ("frontier", 3),
+    "claude-sonnet-5":     ("near-frontier", 2),
+    "claude-sonnet-4-6":   ("near-frontier", 2),
+    "claude-haiku-4-5":    ("small", 1),
+}
+
 
 # --------------------------------------------------------------------------
 # markdown subset
@@ -150,9 +162,14 @@ def parse(path: pathlib.Path) -> dict:
 
     entry["reporter"] = entry["fields"].pop("Reporter", "unknown").strip()
     entry["type"] = entry["fields"].pop("Type", "human").strip().lower()
-    for key in ("Reporter", "Type"):
+    entry["model"] = entry["fields"].pop("Model", "unknown").strip()
+    entry["oneline"] = entry["fields"].pop("In one line", "").strip()
+    for key in ("Reporter", "Type", "Model", "In one line"):
         if key in entry["order"]:
             entry["order"].remove(key)
+
+    tier, rank = TIERS.get(entry["model"], ("unknown", 0))
+    entry["tier"], entry["rank"] = tier, rank
 
     score = re.search(r"(\d+)\s*/\s*10", entry["fields"].get("Bizarre", ""))
     entry["score"] = int(score.group(1)) if score else None
@@ -235,6 +252,9 @@ body{
   -webkit-font-smoothing:antialiased; font-synthesis-weight:none;
 }
 .wrap{max-width:var(--measure); margin:0 auto; padding:0 1.5rem;}
+/* The pill grid is the one thing on the page that wants width. Reading measure
+   governs everything else, so the wide rail is opt-in rather than the default. */
+.wrap--wide{max-width:64rem;}
 a{color:var(--accent); text-underline-offset:.18em; text-decoration-thickness:.06em;}
 a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
 
@@ -264,7 +284,55 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-o
 .sec p{margin:0 0 1rem; text-wrap:pretty;}
 .sec p:last-child{margin-bottom:0;}
 
+/* ---------- pills ---------- */
+.pills{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem;
+  list-style:none; margin:0; padding:0;
+}
+@media (max-width:64rem){ .pills{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:42rem){ .pills{grid-template-columns:1fr;} }
+
+.pill{display:flex;}
+.pill a{
+  display:flex; flex-direction:column; gap:.7rem; width:100%;
+  background:var(--surface); border:1px solid var(--rule); border-radius:5px;
+  padding:1.05rem 1.15rem 1rem; text-decoration:none; color:inherit;
+  transition:border-color .13s ease, transform .13s ease;
+}
+.pill a:hover{border-color:var(--rule-2); transform:translateY(-1px);}
+.pill a:hover .pill__h{color:var(--accent);}
+.pill__top{
+  display:flex; align-items:center; justify-content:space-between; gap:.6rem;
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.09em; color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.pill__h{
+  font-family:var(--serif); font-weight:400; font-size:1.24rem; line-height:1.2;
+  letter-spacing:-.008em; margin:0; text-wrap:balance; transition:color .13s ease;
+}
+.pill__one{font-size:.87rem; line-height:1.5; color:var(--ink-2); margin:0; flex:1; text-wrap:pretty;}
+.pill__foot{
+  display:flex; align-items:center; gap:.45rem; padding-top:.7rem;
+  border-top:1px solid var(--rule); font-family:var(--mono); font-size:.63rem;
+  letter-spacing:.06em; color:var(--muted);
+}
+.pill__model{color:var(--ink-2);}
+.pill__tier{margin-left:auto; text-transform:uppercase; letter-spacing:.11em;}
+
+/* How close to the frontier: three dots, filled by rank. Rendered next to the
+   model name rather than instead of it, so the claim stays checkable. */
+.dots{display:inline-flex; gap:2px; align-items:center;}
+.dots i{width:4px; height:4px; border-radius:50%; background:var(--rule-2);}
+.dots i.on{background:var(--accent);}
+.tier--frontier .dots i.on{background:var(--signal);}
+.tier--frontier .pill__tier{color:var(--signal);}
+
 /* ---------- register ---------- */
+.reg__note{
+  max-width:34rem; font-size:.92rem; color:var(--muted); margin:0 0 1.7rem; text-wrap:pretty;
+}
+.reg__note strong{color:var(--ink); font-weight:600;}
+.reg__note em{color:var(--ink-2);}
 .reg{width:100%; border-collapse:collapse; font-size:.9rem;}
 .reg caption{text-align:left; color:var(--muted); font-size:.86rem; padding-bottom:.9rem;}
 .reg th{
@@ -379,12 +447,21 @@ def build() -> str:
     scored = [e["score"] for e in entries if e["score"] is not None]
     n_human = sum(1 for e in entries if e["type"] == "human")
 
-    rows = "\n".join(
-        f'<tr><td class="d">{e["date"]}</td>'
-        f'<td class="t"><a href="#{e["slug"]}">{html.escape(e["title"])}</a></td>'
-        f'<td class="s">{meter(e["score"])}</td></tr>'
+    pills = "\n".join(
+        f'<li class="pill tier--{e["tier"]}"><a href="#{e["slug"]}">'
+        f'<span class="pill__top"><span>{e["date"]}</span>{meter(e["score"])}</span>'
+        f'<h3 class="pill__h">{html.escape(e["title"])}</h3>'
+        f'<p class="pill__one">{inline(e["oneline"])}</p>'
+        f'<span class="pill__foot">'
+        f'<span class="dots" aria-hidden="true">'
+        + "".join(f'<i class="{"on" if i < e["rank"] else ""}"></i>' for i in range(3))
+        + f"</span>"
+        f'<span class="pill__model">{html.escape(e["model"])}</span>'
+        f'<span class="pill__tier">{html.escape(e["tier"])}</span>'
+        f"</span></a></li>"
         for e in entries
     )
+    n_frontier = sum(1 for e in entries if e["tier"] == "frontier")
 
     body = "\n".join(
         f'<article class="entry" id="{e["slug"]}">'
@@ -393,6 +470,7 @@ def build() -> str:
         f'<span class="entry__date">{e["date"]}</span><span class="dot"></span>'
         f'<span>{html.escape(e["reporter"])}</span>'
         f'<span class="badge badge--{html.escape(e["type"])}">{html.escape(e["type"])}</span>'
+        f'<span class="dot"></span><span>{html.escape(e["model"])}</span>'
         f'<a class="entry__perma" href="#{e["slug"]}" aria-label="Link to this entry">#</a>'
         f"</div>"
         f'<h2 class="entry__title">{html.escape(e["title"])}</h2>'
@@ -432,17 +510,17 @@ def build() -> str:
 </header>
 
 <section class="sec">
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <h2 class="sec__h">The register</h2>
-    <table class="reg">
-      <caption>{len(entries)} entries, newest first. The number is how bizarre the
-        mistake was, not how costly &mdash; 9 and 10 mean the contradicting evidence was
-        visible on screen at the moment of speaking.</caption>
-      <thead><tr><th>Date</th><th>Entry</th><th class="num">Bizarre</th></tr></thead>
-      <tbody>
-{rows}
-      </tbody>
-    </table>
+    <p class="reg__note">{len(entries)} entries, newest first. The score is how
+      <em>bizarre</em> the mistake was, not how costly &mdash; 9 and 10 mean the
+      contradicting evidence was visible on screen at the moment of speaking. The dots
+      say how close to the frontier the model was: <strong>{n_frontier} of
+      {len(entries)}</strong> came from the most capable model available that week, which
+      is the part worth sitting with.</p>
+    <ul class="pills">
+{pills}
+    </ul>
   </div>
 </section>
 

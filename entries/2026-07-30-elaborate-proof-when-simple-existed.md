@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Built a controlled experiment to prove something a fifteen-line relay proved just by working.
 
 **Claimed:** Implicitly — that proving agents can pass messages required a
 controlled experiment: a brute-force puzzle validator, a control arm with the

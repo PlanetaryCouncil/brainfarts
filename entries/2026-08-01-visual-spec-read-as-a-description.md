@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Rendered a spec’s exact glyph as something weaker for eleven turns, with the glyph itself in context.
 
 **Claimed:** Nothing, explicitly — this one is not an assertion. It is an
 instruction, held in memory, rendered wrong for an entire session and then

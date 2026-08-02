@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Blamed a tag not pushing on the remote's name, while a screenshot showed commits arriving from that same remote.
 
 **Claimed:** *"Your remote is named `GitHub_priv`, not `origin` — that's why the
 tag stayed local."*

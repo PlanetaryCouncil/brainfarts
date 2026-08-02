@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Hand-padded two ASCII boxes and got both wrong by exactly one column, in a medium where alignment is arithmetic.
 
 **Claimed:** Nothing said — this one is *emitted*. Two consecutive replies closed
 with a framed poem whose right rail did not line up. Marsita the Ultra sent a screenshot:

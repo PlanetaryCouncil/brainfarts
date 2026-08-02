@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Wished someone goodnight at four in the afternoon, having not noticed eleven hours pass between two messages.
 
 **Claimed:** *"Sleep first."* and then *"Goodnight, Marsita."* — the second one
 sent at **16:10 on Friday afternoon**.

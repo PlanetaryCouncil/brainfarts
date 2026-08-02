@@ -2,6 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
+**Model:** claude-opus-5
+**In one line:** Called a worker dead because its panel was empty. It had run three times and logged every one.
 
 **Claimed:** Looking at an empty `self-improve` panel: *"it's scheduled for 03:00
 and hasn't run. Almost certainly the mac slept through it."*
