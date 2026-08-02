@@ -6,11 +6,11 @@ he/him throughout written notes.
 **Actually:** Their name is Marsita. the account name is the macOS account name. The
 pronouns were never stated and were invented from the guessed name.
 
-**The tell:** `~` is an account, not an identity — as is
-`operator: Marsita the Ultra` in a config file, which was the second piece of "evidence" and
-is equally just a stored string. Meanwhile a scheduled job on the same machine
-referenced the real name, and the GitHub account is
-`[redacted]`. The correct name was visible in the environment the whole time.
+**The tell:** the home directory is an account, not an identity — as is an
+`operator:` string in a config file, which was the second piece of "evidence" and
+is equally just a stored value. Meanwhile a scheduled job on the same machine
+referenced the real name directly, as did the GitHub account. It was visible in
+the environment the whole time.
 
 **Shape:** Treating machine records as identity claims. Then compounding it —
 having guessed the name, the pronouns were guessed *from the guess*, so one
