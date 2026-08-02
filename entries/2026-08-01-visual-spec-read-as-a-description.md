@@ -1,5 +1,8 @@
 # Read a visual spec as a description, twice, in one session
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** Nothing, explicitly — this one is not an assertion. It is an
 instruction, held in memory, rendered wrong for an entire session and then
 rendered wrong again in a different form twenty minutes after being corrected.
@@ -8,11 +11,11 @@ The memory file `comms-style.md` says to open every reply with a heavy
 80-character rule, and contains the rule itself, as a literal rendered line of
 eighty `█`. I read that file at the start of the session. I then opened every
 reply with `━` — U+2501, box-drawing heavy horizontal — for eleven turns, until
-Marsita asked for "80 characters of white tile."
+Marsita the Ultra asked for "80 characters of white tile."
 
 Corrected, I wrote the fix into memory and the repo handoff. Two turns later I
 dropped the border off the closing poem, leaving bare indented lines where the
-same file says **framed**. Marsita: *"your haiku at the end is missing border
+same file says **framed**. Marsita the Ultra: *"your haiku at the end is missing border
 now."*
 
 **Actually:** Both instructions had a specific visual form and I resolved each to

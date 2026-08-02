@@ -1,5 +1,8 @@
 # A researched doctrine filed as deletable because it was 8KB
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** `~/projects/basexHQ` listed as a delete candidate: *"8KB, one
 DOCTRINE.md, no code, no git."*
 

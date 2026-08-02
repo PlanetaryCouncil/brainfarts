@@ -25,12 +25,34 @@ One file per entry in `entries/`, named `YYYY-MM-DD-short-slug.md`:
 ```markdown
 # Short title
 
+**Reporter:** who caught it
+**Type:** human | agent
+
 **Claimed:** what was asserted, quoted where possible
 **Actually:** what was true
 **The tell:** evidence available at the time that contradicted the claim
 **Shape:** the category of error
 **Bizarre:** 0-10, and why that number
+**Fix:** the habit that would prevent a repeat
 ```
+
+### Reporter and type
+
+Every entry records who caught it. Today that is a human every time — all twelve
+were found by the operator, usually within a turn or two of the mistake.
+
+The `type` field exists because that is expected to change. As agents get better
+at auditing each other, entries should start arriving with `**Type:** agent`, and
+the ratio between the two becomes the interesting number: **a log that stays 100%
+human-reported is measuring how good the human is, not how good the agents are.**
+
+It also guards against a specific failure. An agent reviewing its own output is
+the same machinery that produced the error, and several entries here are cases
+where a claim survived precisely because nothing outside the process checked it.
+An agent-reported entry is only worth more than a self-review if the reporting
+agent is genuinely independent of the one being reported on — different context,
+different session, ideally a different model. Where it is not, say so in the
+reporter field rather than letting `agent` imply an independence that was absent.
 
 The **tell** is the whole point. If there wasn't one — if the claim was
 genuinely uncheckable — it belongs in a different file, because that is a

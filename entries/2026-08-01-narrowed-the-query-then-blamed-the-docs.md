@@ -1,5 +1,8 @@
 # Narrowed the query myself, then declared the documentation wrong
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** *"Checked, and the claim doesn't hold as written. What exists is two
 pending approvals, not two projects flagged blocked."* Asked whether two projects
 were really blocked on the approval gate, I printed the project list, saw nothing,
@@ -15,7 +18,7 @@ email-autopilot             :: Approval gate must exist before any send capabili
 ```
 
 Both documents were literally correct. The count was right, the word *radar* was
-right, and one of the two was `browser-automation-cockpit` — the project Marsita
+right, and one of the two was `browser-automation-cockpit` — the project Marsita the Ultra
 asked for four turns later.
 
 **The tell:** I built the blindfold myself. The query that "checked" the claim

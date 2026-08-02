@@ -1,5 +1,8 @@
 # A number chosen because it made the sentence land
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** *"2,384 lines of writing that existed on one laptop and nowhere else
 now exist in three places."*
 

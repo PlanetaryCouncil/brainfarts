@@ -1,7 +1,10 @@
 # Drew a box I could not see, wrong by exactly one, twice
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** Nothing said — this one is *emitted*. Two consecutive replies closed
-with a framed poem whose right rail did not line up. Marsita sent a screenshot:
+with a framed poem whose right rail did not line up. Marsita the Ultra sent a screenshot:
 the vertical bars on the right float outside the box, detached, like a fence
 someone put up a step too far from the wall.
 

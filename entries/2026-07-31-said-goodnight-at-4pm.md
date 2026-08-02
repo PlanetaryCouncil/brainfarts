@@ -1,9 +1,12 @@
 # Said goodnight twice, the second time in broad daylight
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** *"Sleep first."* and then *"Goodnight, Marsita."* — the second one
 sent at **16:10 on Friday afternoon**.
 
-**Actually:** The conversation had paused at 04:40. Marsita went to bed, slept,
+**Actually:** The conversation had paused at 04:40. Marsita the Ultra went to bed, slept,
 and came back 11 hours 30 minutes later. To me the two messages sat next to each
 other, so I carried on as though it were still the small hours and wished them
 goodnight in the afternoon sun.
@@ -16,7 +19,7 @@ goodnight in the afternoon sun.
    that instrument specifically so the passage of time would be visible, and
    then did not look at it.
 3. A system notification that the date had changed.
-4. Marsita's own message said *"I had to sleep"* — past tense. Sleeping is not
+4. Marsita the Ultra's own message said *"I had to sleep"* — past tense. Sleeping is not
    instantaneous.
 
 **Shape:** No perception of elapsed time between turns. This is distinct from the

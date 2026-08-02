@@ -1,5 +1,8 @@
 # "It hasn't run" — it had run three times
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** Looking at an empty `self-improve` panel: *"it's scheduled for 03:00
 and hasn't run. Almost certainly the mac slept through it."*
 

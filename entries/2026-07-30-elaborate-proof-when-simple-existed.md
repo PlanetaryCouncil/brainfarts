@@ -1,5 +1,8 @@
 # Built a machine to detect a signal you could just look at
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** Implicitly — that proving agents can pass messages required a
 controlled experiment: a brute-force puzzle validator, a control arm with the
 channel severed, per-turn session isolation, and a quiet mode to close a

@@ -1,5 +1,8 @@
 # Remote name blamed for tags not pushing
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** *"Your remote is named `GitHub_priv`, not `origin` — that's why the
 tag stayed local."*
 

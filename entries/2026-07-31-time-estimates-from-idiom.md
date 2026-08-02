@@ -1,5 +1,8 @@
 # Estimating time by borrowing human idiom
 
+**Reporter:** Marsita the Ultra
+**Type:** human
+
 **Claimed:** *"Ten minutes of writing buys you a fresh session."* Earlier, that
 adding rate limiting was *"maybe an hour of work"*. Earlier still, that a
 scheduler deadline *"should have fired 10 minutes ago"*.
