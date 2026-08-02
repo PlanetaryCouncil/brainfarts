@@ -21,7 +21,7 @@ OUT = ROOT / "index.html"
 # Fields in the order the format defines them. "The tell" is pulled out of the
 # flow and given its own treatment because the README is explicit that it is the
 # whole point of an entry.
-FIELD_ORDER = ["Claimed", "Actually", "The tell", "Shape", "Bizarre", "Fix"]
+FIELD_ORDER = ["Claimed", "Actually", "The tell", "Shape", "Steelman", "Bizarre", "Fix"]
 
 # How close to the frontier the model was when it made the mistake. The point of
 # recording it: a wrong answer from a small, cheap, year-old model is a footnote.
@@ -412,6 +412,12 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-o
 }
 .field--the-tell .field__label{color:var(--signal);}
 .field--bizarre .field__body,.field--fix .field__body{color:var(--ink-2);}
+/* The counter-argument, set apart from the accusation it answers. Quieter than
+   the tell on purpose: it qualifies the finding, it is not the finding. */
+.field--steelman{
+  border-left:2px solid var(--rule-2); padding:.15rem 0 .15rem 1.2rem;
+}
+.field--steelman .field__body{color:var(--ink-2);}
 
 code{
   font-family:var(--mono); font-size:.86em; background:var(--sunk);

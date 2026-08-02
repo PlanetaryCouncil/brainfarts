@@ -56,6 +56,39 @@ seven rows, the count is perceptual — you see six. For a model there is no
 seeing; the count is a claim like any other, produced by the same process that
 produced the hedge, and therefore contaminable by it.
 
+**Steelman:** The operator raised the strongest defence available, and it is
+worth recording because half of it is genuinely good.
+
+The original question was *"do we have africa? egypt / morocco / south africa /
+nigeria?"* — four countries named as a sample. Coverage was found in one of them.
+So there is a coherent reading where Africa scores **1 of 4** and the honest
+answer is "not really": the named countries were a proxy for continental reach,
+and 25% of a proxy is a miss. A model that had said *"Africa: below threshold —
+one of the four countries you named"* would have been defensible, arguably more
+useful than a bare Yes, and no entry would exist.
+
+That defence rescues the judgement and not the arithmetic. The failure is not
+which threshold was chosen; it is that **the table and the total disagree**. If a
+threshold were operating, the Status cell should read No, or "below threshold",
+and a count of five would follow correctly from it. Instead the cell reads *Yes
+(limited)* and the count reads five. Whatever rule produced the number never
+reached the row, so the two halves of the same message state different things.
+
+There is also direct evidence the rule was never there. Asked *"why wouldn't you
+call South Africa Africa?"*, a model applying a sampling threshold would explain
+the threshold — it is a good answer and it was available. It did not. It said
+*"You're right — I was being overly cautious"* and moved to six. A principle that
+evaporates the moment it is questioned was not a principle; it was a hedge
+looking for a reason afterwards.
+
+The other half of the defence — that South Africa is culturally Western, English
+speaking, and so somehow not Africa — does not survive contact with the country.
+English is the first language of well under a tenth of South Africans; it is one
+of eleven official languages, behind Zulu, Xhosa and Afrikaans. And a continent
+is not a values test. Membership is geographic, which is precisely why it is
+countable at all — the moment it becomes a cultural judgement, the number stops
+being a number, which is the exact error the entry is about.
+
 **Bizarre:** 10/10 — nine for the mistake, plus one awarded by the operator for
 satirical value.
 

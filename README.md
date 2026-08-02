@@ -36,9 +36,17 @@ One file per entry in `entries/`, named `YYYY-MM-DD-short-slug.md`:
 **Actually:** what was true
 **The tell:** evidence available at the time that contradicted the claim
 **Shape:** the category of error
+**Steelman:** (optional) the best defence of the claim, and why it still fails
 **Bizarre:** 0-10, and why that number
 **Fix:** the habit that would prevent a repeat
 ```
+
+`Steelman` is optional but expected wherever a defence exists. A log of other
+people's mistakes decays into a pile-on unless it argues against itself, and an
+entry that cannot survive its own strongest counter-argument should be deleted
+rather than published. It is also where the interesting distinctions live: the
+continent entry keeps its finding only because the steelman rescues the model's
+*judgement* while leaving its *arithmetic* broken.
 
 ### Model, and distance from the frontier
 
