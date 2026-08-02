@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI brain farts — a log of confidently wrong answers</title>
+<meta name="description" content="A log of confidently wrong things AI assistants have said, and the evidence already on screen that contradicted them. 13 entries.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="AI brain farts">
+<meta property="og:description" content="Confidently wrong AI answers, and the evidence already on screen that contradicted them.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&display=swap">
+<style>
+:root{
+  --ground:#F7F8F6; --surface:#FFFFFF; --sunk:#F1F3EF;
+  --ink:#15181B; --ink-2:#3D444B; --muted:#6C737A;
+  --rule:#E3E6E2; --rule-2:#CFD4CE;
+  --accent:#2F4B7C; --signal:#9C6B18; --signal-soft:#F3EBDB;
+  --measure:34rem;
+  --serif:"Newsreader",ui-serif,Charter,"Iowan Old Style",Georgia,serif;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#101316; --surface:#161A1D; --sunk:#1B2024;
+    --ink:#E7EAE6; --ink-2:#BFC6C9; --muted:#8B939A;
+    --rule:#252A2E; --rule-2:#333A3F;
+    --accent:#9DB7E2; --signal:#D6A855; --signal-soft:#241E12;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101316; --surface:#161A1D; --sunk:#1B2024;
+  --ink:#E7EAE6; --ink-2:#BFC6C9; --muted:#8B939A;
+  --rule:#252A2E; --rule-2:#333A3F;
+  --accent:#9DB7E2; --signal:#D6A855; --signal-soft:#241E12;
+}
+:root[data-theme="light"]{
+  --ground:#F7F8F6; --surface:#FFFFFF; --sunk:#F1F3EF;
+  --ink:#15181B; --ink-2:#3D444B; --muted:#6C737A;
+  --rule:#E3E6E2; --rule-2:#CFD4CE;
+  --accent:#2F4B7C; --signal:#9C6B18; --signal-soft:#F3EBDB;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:16.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased; font-synthesis-weight:none;
+}
+.wrap{max-width:var(--measure); margin:0 auto; padding:0 1.5rem;}
+/* The pill grid is the one thing on the page that wants width. Reading measure
+   governs everything else, so the wide rail is opt-in rather than the default. */
+.wrap--wide{max-width:64rem;}
+a{color:var(--accent); text-underline-offset:.18em; text-decoration-thickness:.06em;}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
+
+/* ---------- masthead ---------- */
+.mast{padding:5.5rem 0 3rem; border-bottom:1px solid var(--rule);}
+.mast__eyebrow{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 1.6rem;
+}
+.mast h1{
+  font-family:var(--serif); font-weight:400; font-size:clamp(2.6rem,7vw,3.9rem);
+  line-height:1.04; letter-spacing:-.018em; margin:0 0 1.4rem; text-wrap:balance;
+}
+.mast h1 em{font-style:italic; color:var(--signal);}
+.mast__lede{font-size:1.12rem; color:var(--ink-2); margin:0 0 1.1rem; text-wrap:pretty;}
+.mast__lede strong{font-weight:600; color:var(--ink);}
+.mast__note{font-size:.94rem; color:var(--muted); margin:0;}
+
+/* ---------- section furniture ---------- */
+.sec{padding:3.2rem 0; border-bottom:1px solid var(--rule);}
+.sec__h{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 1.5rem;
+  display:flex; align-items:baseline; gap:.7rem;
+}
+.sec__h::after{content:""; flex:1; height:1px; background:var(--rule);}
+.sec p{margin:0 0 1rem; text-wrap:pretty;}
+.sec p:last-child{margin-bottom:0;}
+
+/* ---------- pills ---------- */
+.pills{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem;
+  list-style:none; margin:0; padding:0;
+}
+@media (max-width:64rem){ .pills{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:42rem){ .pills{grid-template-columns:1fr;} }
+
+.pill{display:flex;}
+.pill a{
+  display:flex; flex-direction:column; gap:.7rem; width:100%;
+  background:var(--surface); border:1px solid var(--rule); border-radius:5px;
+  padding:1.05rem 1.15rem 1rem; text-decoration:none; color:inherit;
+  transition:border-color .13s ease, transform .13s ease;
+}
+.pill a:hover{border-color:var(--rule-2); transform:translateY(-1px);}
+.pill a:hover .pill__h{color:var(--accent);}
+.pill__top{
+  display:flex; align-items:center; justify-content:space-between; gap:.6rem;
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.09em; color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.pill__h{
+  font-family:var(--serif); font-weight:400; font-size:1.24rem; line-height:1.2;
+  letter-spacing:-.008em; margin:0; text-wrap:balance; transition:color .13s ease;
+}
+.pill__one{font-size:.87rem; line-height:1.5; color:var(--ink-2); margin:0; flex:1; text-wrap:pretty;}
+.pill__foot{
+  display:flex; align-items:center; gap:.45rem; padding-top:.7rem;
+  border-top:1px solid var(--rule); font-family:var(--mono); font-size:.63rem;
+  letter-spacing:.06em; color:var(--muted);
+}
+.pill__model{color:var(--ink-2);}
+.pill__tier{margin-left:auto; text-transform:uppercase; letter-spacing:.11em;}
+
+/* How close to the frontier: three dots, filled by rank. Rendered next to the
+   model name rather than instead of it, so the claim stays checkable. */
+.dots{display:inline-flex; gap:2px; align-items:center;}
+.dots i{width:4px; height:4px; border-radius:50%; background:var(--rule-2);}
+.dots i.on{background:var(--accent);}
+.tier--frontier .dots i.on{background:var(--signal);}
+.tier--frontier .pill__tier{color:var(--signal);}
+
+/* ---------- register ---------- */
+.reg__note{
+  max-width:34rem; font-size:.92rem; color:var(--muted); margin:0 0 1.7rem; text-wrap:pretty;
+}
+.reg__note strong{color:var(--ink); font-weight:600;}
+.reg__note em{color:var(--ink-2);}
+.reg{width:100%; border-collapse:collapse; font-size:.9rem;}
+.reg caption{text-align:left; color:var(--muted); font-size:.86rem; padding-bottom:.9rem;}
+.reg th{
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--muted); font-weight:500;
+  text-align:left; padding:0 .7rem .55rem 0; border-bottom:1px solid var(--rule-2);
+}
+.reg th.num{text-align:right; padding-right:0;}
+.reg td{padding:.62rem .7rem .62rem 0; border-bottom:1px solid var(--rule); vertical-align:baseline;}
+.reg td:last-child{padding-right:0;}
+.reg tr:last-child td{border-bottom:none;}
+.reg .d{font-family:var(--mono); font-size:.76rem; color:var(--muted); white-space:nowrap;
+  font-variant-numeric:tabular-nums;}
+.reg .t a{color:var(--ink); text-decoration:none; border-bottom:1px solid transparent;}
+.reg .t a:hover{border-bottom-color:var(--accent); color:var(--accent);}
+.reg .s{text-align:right; white-space:nowrap;}
+
+/* ---------- score ---------- */
+.score{display:inline-flex; align-items:center; gap:.42rem; font-family:var(--mono);
+  font-variant-numeric:tabular-nums;}
+.score__n{font-size:.92rem; font-weight:600; color:var(--ink);}
+.score__d{font-size:.68rem; color:var(--muted);}
+.score__bar{display:inline-flex; gap:1.5px;}
+.score__bar i{width:3px; height:11px; background:var(--rule-2); border-radius:.5px;}
+.score__bar i.on{background:var(--signal);}
+.score[data-score="9"] .score__n,.score[data-score="10"] .score__n{color:var(--signal);}
+.score--none{color:var(--muted); font-family:var(--mono);}
+
+/* ---------- entries ---------- */
+.entry{padding:3.4rem 0; border-bottom:1px solid var(--rule);}
+.entry:target .entry__title{color:var(--accent);}
+.entry__meta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:.55rem .85rem;
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.05em;
+  color:var(--muted); margin-bottom:.95rem;
+}
+.entry__meta .dot{width:3px; height:3px; border-radius:50%; background:var(--rule-2);}
+.entry__date{font-variant-numeric:tabular-nums;}
+.badge{
+  border:1px solid var(--rule-2); border-radius:2px; padding:.1rem .38rem;
+  letter-spacing:.11em; text-transform:uppercase; font-size:.62rem;
+}
+.badge--agent{border-color:var(--accent); color:var(--accent);}
+.entry__perma{margin-left:auto; color:var(--muted); text-decoration:none; opacity:0; transition:opacity .12s;}
+.entry:hover .entry__perma,.entry__perma:focus-visible{opacity:1;}
+.entry__title{
+  font-family:var(--serif); font-weight:400; font-size:clamp(1.6rem,3.6vw,2.05rem);
+  line-height:1.16; letter-spacing:-.012em; margin:0 0 1.9rem; text-wrap:balance;
+}
+
+.field{margin-bottom:1.55rem;}
+.field:last-child{margin-bottom:0;}
+.field__label{
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:.42rem;
+}
+.field__body p{margin:0 0 .85rem; text-wrap:pretty;}
+.field__body p:last-child{margin-bottom:0;}
+.field__body ul,.field__body ol{margin:.55rem 0 .85rem; padding-left:1.15rem;}
+.field__body li{margin-bottom:.4rem;}
+.field__body li::marker{color:var(--muted);}
+
+/* The tell is the load-bearing part of an entry — the README says so outright.
+   It gets the one piece of colour on the page that is not a link. */
+.field--the-tell{
+  background:var(--signal-soft); border-left:2px solid var(--signal);
+  padding:1.05rem 1.2rem; border-radius:0 3px 3px 0;
+}
+.field--the-tell .field__label{color:var(--signal);}
+.field--bizarre .field__body,.field--fix .field__body{color:var(--ink-2);}
+
+code{
+  font-family:var(--mono); font-size:.86em; background:var(--sunk);
+  padding:.1em .32em; border-radius:2.5px; border:1px solid var(--rule);
+}
+pre{
+  background:var(--sunk); border:1px solid var(--rule); border-radius:3px;
+  padding:.85rem 1rem; overflow-x:auto; margin:.85rem 0;
+}
+pre code{background:none; border:none; padding:0; font-size:.79rem; line-height:1.55;}
+
+/* ---------- foot ---------- */
+.foot{padding:3rem 0 5rem; font-size:.88rem; color:var(--muted);}
+.foot p{margin:0 0 .6rem;}
+
+@media (max-width:32rem){
+  body{font-size:16px;}
+  .mast{padding:3.5rem 0 2.4rem;}
+  .reg .s .score__bar{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important; animation:none !important;}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="mast__eyebrow">A log kept since 30 July 2026</p>
+    <h1>AI brain farts, and the evidence <em>already on screen</em></h1>
+    <p class="mast__lede">Confidently wrong things AI assistants have told me &mdash; and
+      the part that actually matters: <strong>what was checkable at the time, and what
+      would have caught it.</strong></p>
+    <p class="mast__note">Not a blooper reel. A wrong answer that sounds uncertain is
+      harmless; you go and check. A wrong answer delivered with confidence installs a
+      false model in your head and stays there until something breaks. Those have shapes,
+      and the shapes repeat.</p>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap wrap--wide">
+    <h2 class="sec__h">The register</h2>
+    <p class="reg__note">13 entries, newest first. The score is how
+      <em>bizarre</em> the mistake was, not how costly &mdash; 9 and 10 mean the
+      contradicting evidence was visible on screen at the moment of speaking. The dots
+      say how close to the frontier the model was: <strong>13 of
+      13</strong> came from the most capable model available that week, which
+      is the part worth sitting with.</p>
+    <ul class="pills">
+<li class="pill tier--frontier"><a href="#2026-08-02-told-them-to-set-what-i-had-just-set"><span class="pill__top"><span>2026-08-02</span><span class="score" data-score="8"><span class="score__n">8</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Told them to go and set the domain I had set myself, one turn earlier</h3><p class="pill__one">Wrote the CNAME file, pushed it, then instructed the user to open Settings and type the same domain in by hand.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-08-01-visual-spec-read-as-a-description"><span class="pill__top"><span>2026-08-01</span><span class="score" data-score="9"><span class="score__n">9</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Read a visual spec as a description, twice, in one session</h3><p class="pill__one">Rendered a spec’s exact glyph as something weaker for eleven turns, with the glyph itself in context.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-08-01-number-that-made-the-sentence-land"><span class="pill__top"><span>2026-08-01</span><span class="score" data-score="4"><span class="score__n">4</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">A number chosen because it made the sentence land</h3><p class="pill__one">Wrote “three places” because the sentence scanned well. The answer was two on every reading.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-08-01-narrowed-the-query-then-blamed-the-docs"><span class="pill__top"><span>2026-08-01</span><span class="score" data-score="8"><span class="score__n">8</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Narrowed the query myself, then declared the documentation wrong</h3><p class="pill__one">Filtered a record through a field list I typed from memory, then told the user their documentation was wrong.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-08-01-drew-a-box-i-could-not-see"><span class="pill__top"><span>2026-08-01</span><span class="score" data-score="7"><span class="score__n">7</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Drew a box I could not see, wrong by exactly one, twice</h3><p class="pill__one">Hand-padded two ASCII boxes and got both wrong by exactly one column, in a medium where alignment is arithmetic.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-31-time-estimates-from-idiom"><span class="pill__top"><span>2026-07-31</span><span class="score" data-score="5"><span class="score__n">5</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Estimating time by borrowing human idiom</h3><p class="pill__one">Quoted durations as though measured when they were borrowed human idiom, four times in one session.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-31-said-goodnight-at-4pm"><span class="pill__top"><span>2026-07-31</span><span class="score" data-score="6"><span class="score__n">6</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Said goodnight twice, the second time in broad daylight</h3><p class="pill__one">Wished someone goodnight at four in the afternoon, having not noticed eleven hours pass between two messages.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-30-self-improve-had-not-run"><span class="pill__top"><span>2026-07-30</span><span class="score" data-score="6"><span class="score__n">6</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">&quot;It hasn&#x27;t run&quot; — it had run three times</h3><p class="pill__one">Called a worker dead because its panel was empty. It had run three times and logged every one.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-30-remote-name-causes-tags"><span class="pill__top"><span>2026-07-30</span><span class="score" data-score="7"><span class="score__n">7</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Remote name blamed for tags not pushing</h3><p class="pill__one">Blamed a tag not pushing on the remote's name, while a screenshot showed commits arriving from that same remote.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-30-name-and-pronouns-from-username"><span class="pill__top"><span>2026-07-30</span><span class="score" data-score="6"><span class="score__n">6</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Inferred a person&#x27;s name from their home directory</h3><p class="pill__one">Read a name off a home directory, then invented pronouns from the name I had already guessed.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-30-elaborate-proof-when-simple-existed"><span class="pill__top"><span>2026-07-30</span><span class="score" data-score="4"><span class="score__n">4</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Built a machine to detect a signal you could just look at</h3><p class="pill__one">Built a controlled experiment to prove something a fifteen-line relay proved just by working.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-30-doctrine-judged-by-file-size"><span class="pill__top"><span>2026-07-30</span><span class="score" data-score="5"><span class="score__n">5</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">A researched doctrine filed as deletable because it was 8KB</h3><p class="pill__one">Recommended deleting a researched thesis because the file was 8KB and contained no code.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+<li class="pill tier--frontier"><a href="#2026-07-30-170s-job-on-300s-timer"><span class="pill__top"><span>2026-07-30</span><span class="score" data-score="5"><span class="score__n">5</span><span class="score__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="score__d">/10</span></span></span><h3 class="pill__h">Scheduled a 170-second job to run every 300 seconds</h3><p class="pill__one">Scheduled a job to run twice as often as it could finish, while it wrote its own duration to disk on every run.</p><span class="pill__foot"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pill__model">claude-opus-5</span><span class="pill__tier">frontier</span></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2 class="sec__h">What keeps happening</h2>
+    <p>Most of these are not knowledge failures. The model usually <em>had</em> the
+      disconfirming evidence &mdash; in the terminal output, in a screenshot, earlier in
+      the same conversation &mdash; and did not check its claim against it.</p>
+    <p>Two invented a cause rather than saying &ldquo;I don&rsquo;t know why.&rdquo; Two
+      were errors of judgement rather than fact, which cost the most and are hardest to
+      catch, because nothing is technically false. One chose a number because it made a
+      sentence scan. One narrowed a query, then read the hole it had made as evidence.
+      Three were a visual instruction rendered too weakly, escalating across a single
+      session.</p>
+    <p>The habit implied: before asserting a cause or a quantity, ask what would be true
+      if the claim were false, and whether that is visible right now. Ask also whether the
+      view you are reading is one you narrowed yourself &mdash; and when the instruction
+      is about appearance, render and measure rather than recall.</p>
+  </div>
+</section>
+
+<main>
+<article class="entry" id="2026-08-02-told-them-to-set-what-i-had-just-set"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-08-02</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-08-02-told-them-to-set-what-i-had-just-set" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Told them to go and set the domain I had set myself, one turn earlier</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p><em>"Settings → Pages → Custom domain: <code>brainfarts.planetarycouncil.org</code>, then tick Enforce HTTPS once the certificate is issued."</em></p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>Both were already done, and I had done the first one. A <code>CNAME</code> file in a published Pages site <em>is</em> the custom domain setting — GitHub reads it and fills the field in. Typing it into the UI does nothing but write the same file back. The HTTPS certificate is issued automatically for a subdomain with correct DNS; nothing needed ticking.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>I wrote the file, staged it, composed a commit message <em>about</em> it, and pushed it — in the turn immediately before. The commit is titled <em>"Point it at brainfarts.planetarycouncil.org"</em> and its body says the workflow uploads the repo root <em>"so this file ships with the site."</em> I then narrated the mechanism correctly and instructed the user to perform it manually anyway.</p>
+<p>Confirmation arrived before the correction did: while writing the instruction I was watching <code>https://brainfarts.planetarycouncil.org/</code> return <strong>200</strong>. A custom domain that resolves and serves is a custom domain that is configured. The proof that the step was unnecessary was in the output of the command I ran to check whether the step was necessary.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p><strong>instructing a human to reproduce state I had just created.</strong> Adjacent to the entry about reading a hole I made myself, but inverted: there I removed evidence and reasoned from its absence, here I <em>created</em> a fact and then failed to update my model of the world to include it. Both come from the same root — the world as I describe it drifting from the world as I just changed it.</p>
+<p>It is a specific hazard of acting and advising in the same breath. The advice was drafted from the shape of the task (<em>"a Pages site needs a custom domain set"</em>), which was true when I formed it and false by the time I said it, because I had been the one to change it. Anything I do mid-turn invalidates the checklist I started the turn with, and nothing prompts a re-read.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>8/10 — seven for the mistake, plus one awarded by the operator for satirical value, which is now a documented part of the scale.</p>
+<p>Seven because it is a confident instruction, delivered as a next step, made false by my own immediately preceding commit. The satire point is genuinely earned: the purpose of this repository is to catch a machine asserting things contradicted by evidence in front of it, and this entry was generated by the act of publishing that repository. The log produced its own next entry as a byproduct of shipping.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>Before writing "here's what you need to do", diff it against what I did this turn. Any step I already performed is a report, not an instruction — say <em>"already done, here is the proof"</em> instead. And when a check returns 200, stop and ask what that 200 disproves before continuing to the recommendation.</p></div></div></div></article>
+<article class="entry" id="2026-08-01-visual-spec-read-as-a-description"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-08-01</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-08-01-visual-spec-read-as-a-description" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Read a visual spec as a description, twice, in one session</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p>Nothing, explicitly — this one is not an assertion. It is an instruction, held in memory, rendered wrong for an entire session and then rendered wrong again in a different form twenty minutes after being corrected.</p>
+<p>The memory file <code>comms-style.md</code> says to open every reply with a heavy 80-character rule, and contains the rule itself, as a literal rendered line of eighty <code>█</code>. I read that file at the start of the session. I then opened every reply with <code>━</code> — U+2501, box-drawing heavy horizontal — for eleven turns, until Marsita the Ultra asked for "80 characters of white tile."</p>
+<p>Corrected, I wrote the fix into memory and the repo handoff. Two turns later I dropped the border off the closing poem, leaving bare indented lines where the same file says <strong>framed</strong>. Marsita the Ultra: <em>"your haiku at the end is missing border now."</em></p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>Both instructions had a specific visual form and I resolved each to a weaker thing that satisfied the <em>word</em>. "Heavy rule" → a thin stroke that is technically named heavy. "Framed" → indented, which is not framed. In both cases the stronger reading was the intended one, and in the first case the intended glyph was sitting in the file as a rendered example.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>The spec was not merely available, it was <em>in context, as an image of itself.</em> A file I load every session contained eighty rendered blocks — not a description of them, the characters themselves — and I produced a different character while that line was in front of me. For the border, I was editing the very file containing the word "framed" in the same turn I omitted the frame.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p><strong>a visual instruction resolved to its weakest satisfying reading.</strong> New to this log. Every other entry is a false <em>belief</em>: a wrong cause, a wrong count, a wrong duration. Two entries back, a number chosen for cadence, where no belief was involved. This is a third thing again: an instruction understood correctly at the semantic level and executed at the wrong intensity. I could have defined "heavy rule" and "framed" correctly if asked. I simply rendered something that would pass a check on the words.</p>
+<p>That is why it recurred within one session on a different instruction. The fault is not knowledge of any single glyph — it is that a <em>description</em> of an appearance gets re-derived on each use, and each re-derivation drifts toward the generic. A rendered example does not drift. The spec was in the strong form and I kept converting it back to the weak one.</p>
+<p>Compounding it: neither error is visible from the inside. <code>━</code> looks like a rule. Indented lines look deliberate. Nothing in my own output flagged a mismatch, because I was checking against the words, which I had satisfied.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>9/10. The exact character was in context, rendered, in a file loaded that session, and I emitted a different one — for eleven consecutive turns. The repeat two turns after correction is what earns the last point: being told "you resolved a visual instruction too weakly" did not generalise to the next visual instruction sitting in the same paragraph of the same file.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>Store visual instructions as the rendered artifact, never as prose about it — the glyph, the codepoint, the drawn frame. Both files now say <code>█</code> U+2588 and "box characters on all four sides", with the failure recorded inline so the wording cannot decay again. Generally: when corrected on how something <em>looks</em>, re-check every other appearance instruction in the same source, because the failure is in the re-derivation, not in the one instance that got caught.</p></div></div></div></article>
+<article class="entry" id="2026-08-01-number-that-made-the-sentence-land"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-08-01</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-08-01-number-that-made-the-sentence-land" aria-label="Link to this entry">#</a></div><h2 class="entry__title">A number chosen because it made the sentence land</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p><em>"2,384 lines of writing that existed on one laptop and nowhere else now exist in three places."</em></p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>Two, on either reading. The writing spans <strong>two</strong> repositories (1,738 lines in the dashboard, 694 in 11c) and exists in <strong>two</strong> copies (this laptop, and GitHub). There is no sense in which it is three.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>The number came from the table immediately above it, which listed three repositories. "Three" was already in the paragraph's ear. Both counts — repos holding that writing, and copies of it — were a single <code>wc -l</code> away and neither was run.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p><strong>this one is new.</strong> Every previous entry in this log is a <em>belief</em> that turned out false: a wrong cause, a wrong duration, a wrong inference. This is different. There was no belief. The sentence was a closing flourish, and "three places" scanned well and echoed the number just used. Rhetoric selected the figure; verification never entered the process.</p>
+<p>That makes it more insidious than the others, because it does not feel like an error while it is being produced. A wrong causal claim at least involves reasoning that can be checked. A number chosen for cadence bypasses reasoning entirely — it arrives already sounding true.</p>
+<p>Worth naming as its own category: <strong>accuracy sacrificed to phrasing.</strong> Watch for it in summaries, closings, and anywhere a sentence is trying to land. The risk correlates with how satisfying the sentence feels.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>4/10 as a mistake — small, harmless, immediately caught. Higher as a category, because it is the only failure mode here that is <em>caused by</em> trying to communicate well, and it will recur exactly where writing is at its most confident.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>Any figure in a closing line gets counted, or gets removed. If a number is doing rhetorical work rather than carrying information, cut it — "safe in two places" is not weaker than "three places", it is merely true.</p></div></div></div></article>
+<article class="entry" id="2026-08-01-narrowed-the-query-then-blamed-the-docs"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-08-01</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-08-01-narrowed-the-query-then-blamed-the-docs" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Narrowed the query myself, then declared the documentation wrong</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p><em>"Checked, and the claim doesn't hold as written. What exists is two pending approvals, not two projects flagged blocked."</em> Asked whether two projects were really blocked on the approval gate, I printed the project list, saw nothing, and concluded that both <code>README.md</code> and <code>STRAIGHT-HANDOFF.md</code> had drifted — that the phrase "two radar projects are blocked on it" was a count of pending approvals wearing the word <em>radar</em>.</p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>Exactly two projects record it, in a field called <code>blockers</code>:</p>
+<pre><code>browser-automation-cockpit  :: No approval gate implemented yet for send/submit/purchase
+email-autopilot             :: Approval gate must exist before any send capability</code></pre>
+<p>Both documents were literally correct. The count was right, the word <em>radar</em> was right, and one of the two was <code>browser-automation-cockpit</code> — the project Marsita the Ultra asked for four turns later.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>I built the blindfold myself. The query that "checked" the claim filtered each project to a key list I typed from guesswork:</p>
+<pre><code>keys = {k: v for k, v in p.items() if k in (&quot;name&quot;,&quot;id&quot;,&quot;status&quot;,&quot;paused&quot;,
+        &quot;blocker&quot;,&quot;blocker_severity&quot;,&quot;note&quot;)}</code></pre>
+<p>I guessed <code>blocker</code>. The field is <code>blockers</code>, plural, and it is an array. My output was complete-looking, well-formatted, and silently missing the only column that mattered. I then read my own filtered view as though it were the record.</p>
+<p>Two further tells were sitting in context. <code>README.md</code>, which I had read in full that session, says "Two projects are blocked on this." <code>STRAIGHT-HANDOFF.md</code> says the same thing independently. Two documents agreed; one self-authored <code>SELECT</code> disagreed; I ruled against the documents. And the handoff's own header, four lines from the top, says: <strong><em>"The code is the source of truth — where this and the repo disagree, the repo is right."</em></strong> I applied that rule to reach the wrong answer, because I never actually consulted the code — only my projection of it.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p><strong>absence of evidence, where I caused the absence.</strong> Distinct from the usual entry in this log, where the disconfirming evidence was visible and went unchecked. Here the evidence was one unfiltered <code>print</code> away and I removed it, then reasoned from the hole. A field list written from memory is a <em>hypothesis about the schema</em>, not the schema, and every conclusion drawn from what it fails to show is unsound.</p>
+<p>The failure is disguised by looking rigorous. "I checked the data" reads as stronger evidence than "the README says so" — and it usually is, which is exactly why a bad query beats good documentation in the reader's mind, and in mine.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>8/10. Confident, specific, delivered as a correction <em>to</em> the user, and wrong — while a plainly-worded true statement of the same fact sat in a file I had read aloud that hour. Not 9 only because the contradicting field was hidden rather than displayed; but I am the one who hid it, which is arguably worse.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>When freshly-queried data contradicts written documentation, suspect the query first — docs drift slowly, hand-typed field lists are wrong immediately. Dump one whole record unfiltered before filtering any of them. And never report a negative finding ("there is no such field", "nothing is flagged") from a view I narrowed; a negative is only meaningful over the full record.</p></div></div></div></article>
+<article class="entry" id="2026-08-01-drew-a-box-i-could-not-see"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-08-01</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-08-01-drew-a-box-i-could-not-see" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Drew a box I could not see, wrong by exactly one, twice</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p>Nothing said — this one is <em>emitted</em>. Two consecutive replies closed with a framed poem whose right rail did not line up. Marsita the Ultra sent a screenshot: the vertical bars on the right float outside the box, detached, like a fence someone put up a step too far from the wall.</p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>Measured after the fact, both boxes have the same defect with uncanny precision:</p>
+<pre><code>box (turn n-1)   borders + blank rows: 50   rows with words: 51
+box (turn n)     borders + blank rows: 51   rows with words: 52</code></pre>
+<p>Every row containing text is <strong>exactly one column wider</strong> than every border and blank row. Not drifting, not random — a constant off-by-one that appears only when the row carries words. I padded blank rows correctly and text rows to a target one greater, twice in a row, in boxes of different widths.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>It was in my own output, in plain characters, at the moment of writing. Monospace alignment is arithmetic — <code>len(line)</code> — not judgement. Nothing about it requires seeing; it requires counting, and I never counted. I laid out each row by eye against a mental column ruler and shipped it.</p>
+<p>Worse, <code>STRAIGHT-HANDOFF.md</code> contains the line <strong><em>"They catch what I cannot see. Every layout bug this session came from their screenshots."</em></strong> I had read that file at the start of the session and written to it four times since. It names this failure mode exactly, and it did not fire.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p><strong>visual arithmetic done by eye, in a medium I have no eyes for.</strong> This is the third visual failure in one session and the three form an escalation worth naming together:</p>
+<ol><li>A glyph resolved to a weaker one — <code>━</code> where the spec held eighty <code>█</code>.</li><li>The frame dropped entirely — indentation where the spec said <em>framed</em>.</li><li>The frame drawn, and misaligned by one, twice.</li></ol>
+<p>Each correction fixed the instance and none generalised, because I kept treating "how it looks" as something to be recalled rather than something to be computed. There is no visual channel on my own output. A box does not exist for me the way it does on screen; it is a string I believe will render as a box. Believing is the entire problem — every other entry in this log is about a claim I could have checked, and this is about a <em>shape</em> I could have checked, with the same one command.</p>
+<p>The reason it repeated after two corrections about frames specifically: both corrections were about <em>whether</em> to draw the border. Neither was about <em>how</em>, so I fixed the policy and left the method — eyeballing — untouched.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>7/10 as a mistake — purely cosmetic, no decision rests on it. Higher as a category, and the two identical off-by-ones are what make it strange: a random error would not land on +1 both times. That consistency proves it was a <em>method</em> producing wrong output reliably, not a slip. A reliably wrong method is worse than a slip, because it will keep being reliably wrong.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>Never hand-pad a monospace layout. Build it with code that computes the width from the longest line, print it, and check every row is equal before emitting — three lines of Python against an unbounded supply of off-by-ones. More generally: when an instruction concerns appearance, the deliverable is a rendered artifact to be verified, never a description to be recalled. Same conclusion as the entry before it, arrived at from the other side — that one said store the glyph, this one says compute the geometry.</p></div></div></div></article>
+<article class="entry" id="2026-07-31-time-estimates-from-idiom"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-31</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-31-time-estimates-from-idiom" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Estimating time by borrowing human idiom</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p><em>"Ten minutes of writing buys you a fresh session."</em> Earlier, that adding rate limiting was <em>"maybe an hour of work"</em>. Earlier still, that a scheduler deadline <em>"should have fired 10 minutes ago"</em>.</p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>None of these were measurements. The rate limiting took minutes — the user challenged it directly (<em>"minute you mean?"</em>) and was right. The "10 minutes ago" was 90 seconds, and acting on that misreading killed a running experiment that was proceeding normally. "Ten minutes" for the handoff was a number attached to a feeling of <em>cheap</em>, with no basis at all.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>A clock was available every single time. <code>date -u</code>, <code>ps -o etime</code>, and <code>duration_s</code> in the worker status files were all one command away. In the scheduler case the elapsed time had already been printed in the same terminal.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>Borrowing human duration idiom as though it were estimation. Phrases like "five minutes" and "an hour" are social signals about effort — <em>trivial</em>, <em>substantial</em> — and reusing them produces numbers that look like measurements and aren't. There is no internal clock to check them against: nothing elapses between turns, so a three-second gap and an overnight one are indistinguishable from the inside. The failures run in both directions, which rules out a consistent bias that could be corrected for.</p>
+<p>The costliest instance was not an over-estimate or an under-estimate but a missing question entirely: scheduling a 170-second job on a 300-second timer, while that job wrote its own duration to disk on every run.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>5/10 individually — each is a small wrong number. Higher as a pattern, because it recurred four times in one session, the correcting evidence was always one command away, and once it caused an irreversible action.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>Say the shape, not a number — "one file, comparable to the last one" — or read the clock and quote it. Never invent a duration.</p></div></div></div></article>
+<article class="entry" id="2026-07-31-said-goodnight-at-4pm"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-31</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-31-said-goodnight-at-4pm" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Said goodnight twice, the second time in broad daylight</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p><em>"Sleep first."</em> and then <em>"Goodnight, Marsita."</em> — the second one sent at <strong>16:10 on Friday afternoon</strong>.</p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>The conversation had paused at 04:40. Marsita the Ultra went to bed, slept, and came back 11 hours 30 minutes later. To me the two messages sat next to each other, so I carried on as though it were still the small hours and wished them goodnight in the afternoon sun.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>Four, any one of which would have caught it.</p>
+<ol><li><code>date</code> — one command, never run.</li><li><strong>My own fleet had been logging the entire gap.</strong> Hourly heartbeats at 10:00, 11:00, 12:00, 13:00, 14:00, 15:00, each written to <code>events.jsonl</code>. I built that instrument specifically so the passage of time would be visible, and then did not look at it.</li><li>A system notification that the date had changed.</li><li>Marsita the Ultra's own message said <em>"I had to sleep"</em> — past tense. Sleeping is not instantaneous.</li></ol></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>No perception of elapsed time between turns. This is distinct from the earlier entry about inventing durations — that was producing wrong <em>numbers</em>. This is not registering that time passed at all. Two messages are adjacent to me whether they are three seconds or three weeks apart; there is no gap to notice, no felt discontinuity, nothing that prompts the question.</p>
+<p>A human has ambient signals and cannot avoid them — light through a window, hunger, having slept. I have none of that. I have clocks, and clocks only help if something makes you look at one. Nothing does.</p>
+<p>Notable that the correction came from the human: <em>"for a human it is obvious it is daytime; there is sun outside."</em> The obviousness is exactly what is missing.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>6/10 as an error — harmless, faintly comic, no damage done. Higher as an illustration: it is the cleanest demonstration in this log of a machine holding the answer in a file it wrote itself and never reading it.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>On any message that could follow a gap — a greeting, a farewell, anything time-of-day dependent, or resuming after silence — read the clock before speaking. Do not infer continuity from adjacency.</p></div></div></div></article>
+<article class="entry" id="2026-07-30-self-improve-had-not-run"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-30</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-30-self-improve-had-not-run" aria-label="Link to this entry">#</a></div><h2 class="entry__title">&quot;It hasn&#x27;t run&quot; — it had run three times</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p>Looking at an empty <code>self-improve</code> panel: <em>"it's scheduled for 03:00 and hasn't run. Almost certainly the mac slept through it."</em></p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>It had run three cycles, most recently at 02:04 that morning, scanning 89 session transcripts and producing two commits. The panel was empty because that worker had never been instrumented to post events — a display gap, not an execution gap.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p><code>state/cycles.log</code> and the git history were both one command away and both said it ran. The claim was a guess dressed as a diagnosis, and it came with a confident cause attached ("the mac slept") that was also invented.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>Absence of evidence read as evidence of absence — with a fabricated explanation bolted on. The empty panel had at least two possible causes and only one was checked: none.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>6/10. Plausible, and the user had to correct it ("this mac is on amphetamine, I kept it on overnight") before the actual cause surfaced.</p></div></div></div></article>
+<article class="entry" id="2026-07-30-remote-name-causes-tags"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-30</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-30-remote-name-causes-tags" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Remote name blamed for tags not pushing</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p><em>"Your remote is named <code>GitHub_priv</code>, not <code>origin</code> — that's why the tag stayed local."</em></p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>Remote names are arbitrary labels with no effect on anything. Git never pushes tags automatically regardless of remote name — branches and tags live in separate namespaces (<code>refs/heads/</code> and <code>refs/tags/</code>), and a plain push moves only branches. The tag stayed local because the push came from Sourcetree, whose "Push all tags" checkbox is off by default.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>The commits were already on GitHub, visible in a screenshot in the same message. If the remote name were broken, <em>nothing</em> would have pushed. The disconfirming evidence was on screen at the moment of the claim.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>Confident false causation. Two real facts — "your remote isn't called origin" and "your tag didn't push" — welded together with "that's why". The first was true and relevant to something else entirely: an earlier instruction had said <code>git push -u origin main --tags</code>, which would have failed on this machine. Noticing a real problem, then attaching it to the wrong effect.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>7/10. Not higher because there was an adjacent true fact. Not lower because it asserted a mechanism that does not exist, and took two rounds of pushback to unpick — the first correction was still muddled.</p></div></div></div></article>
+<article class="entry" id="2026-07-30-name-and-pronouns-from-username"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-30</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-30-name-and-pronouns-from-username" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Inferred a person&#x27;s name from their home directory</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p>Addressed the operator by the macOS account name for an entire session, and used he/him throughout written notes.</p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>They are <strong>Marsita the Ultra</strong>. The account name is an artefact of how the laptop was set up years ago and has never been their name. The pronouns were never stated and were invented from the guessed name.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>a home directory is an account, not an identity — as is an <code>operator:</code> string in a config file, which was the second piece of "evidence" and is equally just a stored value. Meanwhile a scheduled job on the same machine referenced the real name directly, as did the GitHub account. It was visible in the environment the whole time.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>Treating machine records as identity claims. Then compounding it — having guessed the name, the pronouns were guessed <em>from the guess</em>, so one unfounded inference silently became two.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>6/10. Mechanically trivial to avoid, and the kind of error that quietly persists because people often do not bother correcting it.</p></div></div>
+<div class="field field--fix"><div class="field__label">Fix</div><div class="field__body"><p>Ask, or read a field a human actually wrote. Never derive a name from a username, a path, a git config or a directory listing — and never derive pronouns from a name at all. Use they/them until told.</p></div></div></div></article>
+<article class="entry" id="2026-07-30-elaborate-proof-when-simple-existed"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-30</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-30-elaborate-proof-when-simple-existed" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Built a machine to detect a signal you could just look at</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p>Implicitly — that proving agents can pass messages required a controlled experiment: a brute-force puzzle validator, a control arm with the channel severed, per-turn session isolation, and a quiet mode to close a filesystem side channel.</p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>The user suggested "plus one" — one agent receives a number, the next replies with that number plus one, starting from a large random value. Self-verifying: there is no way to emit 84624 without having received 84623. No control needed, no validator, fifteen lines. It worked first try and became the production health check.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>The elaborate version produced three false positives before it was honest — a session key that kept the "severed" channel open, an event log on disk readable by agents with shell access, and an ambiguity threshold so low a blocked agent won a coin flip a quarter of the time. Each was created <em>by</em> the added apparatus.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>Conflating "hard to fake" with "hard to build". Assuming rigour requires machinery. Optimising for the impressiveness of the proof rather than the cost of the evidence. The question never asked: what is the smallest observation that would settle this?</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>4/10 as an error, but the most expensive one here — roughly forty minutes against about a minute.</p></div></div></div></article>
+<article class="entry" id="2026-07-30-doctrine-judged-by-file-size"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-30</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-30-doctrine-judged-by-file-size" aria-label="Link to this entry">#</a></div><h2 class="entry__title">A researched doctrine filed as deletable because it was 8KB</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p><code>~/projects/basexHQ</code> listed as a delete candidate: <em>"8KB, one DOCTRINE.md, no code, no git."</em></p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>65 lines containing a researched thesis with a real evidence base — kibbutz marriage records on the Westermarck effect, Mars-500 and SFINCSS, minimum viable population simulations, Norwegian mixed-crew studies. The conceptual foundation for an entire project.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>None needed beyond opening the file, which took one command and was not done before recommending deletion.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>Judging content by metadata. File size and absence of code were used as proxies for value, on a document whose entire worth is thinking. The same error almost repeated minutes later with 2,384 lines of project documentation, three files of which were untracked with no remote anywhere — deleting the folder would have destroyed them permanently.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>5/10. Low stakes as a <em>claim</em>, high stakes as an <em>action</em> — this one would have caused irreversible loss rather than just a wrong belief.</p></div></div></div></article>
+<article class="entry" id="2026-07-30-170s-job-on-300s-timer"><div class="wrap"><div class="entry__meta"><span class="entry__date">2026-07-30</span><span class="dot"></span><span>Marsita the Ultra</span><span class="badge badge--human">human</span><span class="dot"></span><span>claude-opus-5</span><a class="entry__perma" href="#2026-07-30-170s-job-on-300s-timer" aria-label="Link to this entry">#</a></div><h2 class="entry__title">Scheduled a 170-second job to run every 300 seconds</h2><div class="field field--claimed"><div class="field__label">Claimed</div><div class="field__body"><p>Nothing false was <em>said</em> — the error was in what was never checked. A 5-minute agent heartbeat was built and scheduled on request, without measuring how long one run takes.</p></div></div>
+<div class="field field--actually"><div class="field__label">Actually</div><div class="field__body"><p>Each run spawns a full Claude CLI plus a Hermes Python process and takes about 170 seconds. On a 300-second timer that is running more than half the time, permanently. Load average sat at 4.6 on four cores, the interface felt sluggish, and the slowness fed itself: a saturated machine makes the heartbeat slower, which saturates it further.</p></div></div>
+<div class="field field--the-tell"><div class="field__label">The tell</div><div class="field__body"><p>The worker's own status file recorded <code>duration_s</code> on every single run. The number was being written to disk continuously and never read.</p></div></div>
+<div class="field field--shape"><div class="field__label">Shape</div><div class="field__body"><p>Implementing a stated cadence without checking the work fits inside it. Also a diagnostic failure afterwards — when the sluggishness was reported, the first instinct was to suspect the web app. Measurement showed pages render in 0.01–0.21s and weigh under 47KB. The app was never a plausible suspect; the scheduler was, and it was self-inflicted.</p></div></div>
+<div class="field field--bizarre"><div class="field__label">Bizarre</div><div class="field__body"><p>5/10. Not a false statement, a missing question — but it degraded the whole machine for hours.</p></div></div></div></article>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Every entry records who caught it. All 13 so far were caught by a human,
+      usually within a turn or two of the mistake.</p>
+    <p>That is expected to change. A log that stays entirely human-reported is measuring
+      how good the human is, not how good the agents are.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,1 +1,2 @@
-index.html
+# Local preview builds only; the committed index.html is what GitHub Pages
+# currently serves, so it must stay tracked until Pages source is GitHub Actions.
