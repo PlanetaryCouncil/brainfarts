@@ -58,6 +58,21 @@ The **tell** is the whole point. If there wasn't one — if the claim was
 genuinely uncheckable — it belongs in a different file, because that is a
 knowledge gap, not a brain fart.
 
+## The site
+
+`build.py` renders every entry into a single `index.html`, published with GitHub
+Pages. No Jekyll, no gems, no `node_modules` — a standard-library Python script
+and one HTML file, because the barrier to filing a correction should be a
+markdown file and nothing else.
+
+```bash
+python3 build.py     # writes index.html
+```
+
+A push to `main` rebuilds and deploys automatically, so committing an entry is
+enough. The build is strict about the format above: a heading it cannot parse
+stops the build rather than publishing a half-rendered entry.
+
 ## Rating
 
 Roughly:
