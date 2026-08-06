@@ -3,6 +3,8 @@
 **Reporter:** Marsita the Ultra
 **Type:** agent
 **Model:** claude-opus-5
+**Scale:** 4 / 4 / 3 / 2 (A/U/T/D) — SILENT. The user flagged it twice before I
+did (U high), and the script printed SUCCESS while the login had failed.
 **In one line:** Wrote a password-recovery script whose success marker was a
 literal string inside the ssh command; `expect` echoes the command it spawns,
 so `grep` matched the marker on every run — reporting phantom logins — and I
