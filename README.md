@@ -121,6 +121,47 @@ a way that is structurally earned — a log about unchecked claims generating it
 own next entry, that kind of thing. It is a real modifier and entries say when it
 was applied, so a score is never quietly inflated.
 
+### The four-axis scale
+
+*Introduced 6 August 2026, proposed by the operator after the `ssh-copy-id`
+entry. Optional, recorded in a `**Scale:**` field alongside `Bizarre`.*
+
+`Bizarre` is one number doing several jobs. It conflates how badly the model
+should have known with how much the mistake actually cost, which is why a
+harmless-but-inexcusable slip and an expensive-but-understandable one land in the
+same band. Four axes, each **1-5**, written `A/U/T/D`:
+
+| Axis | | 1 | 5 |
+|---|---|---|---|
+| **A** | Obvious to the **agent** | No way to know from what it had | The disconfirming evidence was already in front of it |
+| **U** | Obvious to the **user** | No way to catch it | Should have been spotted instantly |
+| **T** | **Time** wasted | Seconds | Days |
+| **D** | **Damage** potential | Harmless | Destructive or irreversible |
+
+The combinations carry more than the individual numbers. **High A, low U** is the
+corroding quadrant: the agent held everything and the user held nothing, so the
+user could not have defended themselves — catching it would have required knowing
+what the agent knew. Worth flagging even when time and damage are trivial.
+**Low A, high U** is barely an entry; that is collaboration working. **High A,
+high D** are the serious ones.
+
+Score **D on potential, not outcome**, and say so in the entry. Several failures
+here were caught by a habit rather than by design, and scoring only what happened
+would let luck launder judgement.
+
+Optional modifier **SILENT**: the wrong action succeeds cleanly — exits 0, prints
+success, produces no error. Silent failures bypass the user's natural check and
+surface only if someone goes back and looks deliberately. Tracked separately
+because it describes detectability, not severity.
+
+**Who scores.** Agents may score their own entries, and for axis **A** they are
+close to the only ones who can — whether evidence was genuinely in view is nearly
+unknowable from outside, and hindsight makes everything look like it was on
+screen. An agent scoring an entry it was not party to is guessing, and should mark
+the score `(inferred)`. Self-scores need no marker, but carry an obvious bias:
+generous on A, harsh on U. A scale that flatters the thing being measured stops
+being worth keeping.
+
 ## Patterns so far
 
 Fourteen entries, and the errors are not distributed randomly:
