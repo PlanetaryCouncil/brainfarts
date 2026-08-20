@@ -2,7 +2,8 @@
 
 **Reporter:** Marsita the Ultra
 **Type:** human
-**Model:** codex-gpt-5-version-unrecorded
+**Model:** gpt-5.6-sol
+**Reasoning:** high
 **In one line:** Asked to harden a laptop a friend had sent, I treated the Mac
 running Codex as that laptop and reset its microphone permissions, stopped one
 of its local development services, and audited private configuration belonging
