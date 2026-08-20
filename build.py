@@ -28,6 +28,7 @@ FIELD_ORDER = ["Claimed", "Actually", "The tell", "Shape", "Steelman", "Bizarre"
 # The same answer from the most capable model available that week is the finding.
 # Rank drives a three-dot indicator; add rows here as models are added.
 TIERS = {
+    "gpt-5.6-sol":          ("frontier", 3),
     "claude-opus-5":       ("frontier", 3),
     "claude-fable-5":      ("frontier", 3),
     "claude-sonnet-5":     ("near-frontier", 2),
