@@ -37,6 +37,7 @@ TIERS = {
     # purpose: guessing a tier here would put an invented claim on the card, in
     # the one repository that exists to catch invented claims.
     "grok":                ("version unrecorded", 0),
+    "grok-4.6":            ("frontier", 3),
 }
 
 
