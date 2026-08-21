@@ -5,7 +5,8 @@
 **Model:** grok-4.6
 **In one line:** Menu option 1 was `/flush then /new` as if a digit
 would run those; both are TUI slash commands the operator types by
-hand. The agent cannot.
+hand. They smelled it immediately: *how on earth can you do that.*
+They were correct. The agent cannot.
 
 **Claimed:** that picking `1` would flush memory and start a new
 session.
@@ -31,22 +32,32 @@ them. They will not.
 "yes, that is the plan" — I pack, you flush and new. A digit as
 consent to the plan, not as a remote-control key.
 
-It still fails. The option read as execute. They had to laugh
-`LOL` and name it. If the plan is "you type two slashes", the
-reply is those two lines, not a button that cannot press them.
+It still fails. The option read as execute. If the plan is "you
+type two slashes", the reply is those two lines, not a button
+that cannot press them.
 
-**Bizarre:** 7/10. Same sitting as "a digit is not YES". Now a
-digit is not `/new` either. Low damage, high comedy. The window
-was already 83%.
+**Bizarre:** 8/10. Same sitting as "a digit is not YES". Now a
+digit is not `/new` either. +1 satirical: so obnoxious it is
+funny. Not a humour discount. The `LOL` was the tell of a
+correct prediction, not a shrug that the slip was tiny. Window
+already 83%.
 
-**Scale:** **7 / 1 / 1 / 1** — SILENT. Obvious to the agent 7:
-slash commands were in the handoff I had just written. Obvious
-to the operator 1: they typed LOL. Time 1. Damage 1: they still
-have to type the two lines.
+**Scale:** **5 / 5 / 1 / 1** (A/U/T/D) — SILENT on damage.
+A=5: the option text was slash commands; those are not tools.
+U=5: should have been spotted instantly, and it was. The
+operator's thought was *how on earth is it possible for you to
+do that* — and they were correct. That is fair AI intuition,
+not a 1 because they laughed. T=1 seconds. D=1: they still
+type the two lines. Do not score U down for comedy.
 
 **Fix:** If only the operator can do it, say so in the first
 sentence: *you type `/flush` then `/new`. I cannot.* Do not put
 operator-only keystrokes behind a numbered execute option.
+After a brainfart commit, always paste two links: the GitHub
+commit, and the live card URL. Default, not when remembered.
 
 **Caught by:** Marsita, who said the instructions were "press 1
-to do X Y Z" and forgot X Y Z can be done by hand only.
+to do X Y Z" and forgot X Y Z can be done by hand only. Then:
+the LOL does not make it a 1. It is so obnoxious it is funny.
+They were actually thinking the agent could not do it, and they
+were correct. Their AI intuition is fair.
