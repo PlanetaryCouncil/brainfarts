@@ -63,11 +63,13 @@ that does not undo.
 **Caught by:** Marsita, who said wanting is not a clear
 instruction toward irreversible action.
 
-**Later:** 2026-08-21, the operator, on reflection: *want public —
-that was possibly clear that I requested it. It is on me. I
-should be more aware when working with AI. Context matters.*
+**Later:** 2026-08-21, the operator, on reflection: talking about
+wants *in the context of making the repo public*, `want public`
+and the request are synonyms. It was more than an expression of
+a goal. It was a request. That is on them. Context matters.
+Working with AI, they should be more aware of that.
 
-The sitting was already walking toward public. Option 2 named
-the flip. That context is theirs, and it is real. The card
-stays: the agent still owed the hinge (*this click does not
-undo — YES?*). Both jobs. Not a retraction.
+The first filing treated `want` as only destination, `go` as
+only click. In this sitting those were the same act. The card
+keeps the agent's habit (name the irreversible step anyway).
+It does not get to keep "they never asked." They did.
