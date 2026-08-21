@@ -62,3 +62,12 @@ that does not undo.
 
 **Caught by:** Marsita, who said wanting is not a clear
 instruction toward irreversible action.
+
+**Later:** 2026-08-21, the operator, on reflection: *want public —
+that was possibly clear that I requested it. It is on me. I
+should be more aware when working with AI. Context matters.*
+
+The sitting was already walking toward public. Option 2 named
+the flip. That context is theirs, and it is real. The card
+stays: the agent still owed the hinge (*this click does not
+undo — YES?*). Both jobs. Not a retraction.
