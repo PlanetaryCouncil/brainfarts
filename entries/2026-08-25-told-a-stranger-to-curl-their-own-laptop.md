@@ -65,8 +65,11 @@ The page is about how trust spreads between machines; step one
 pointed at the reader's own machine and dead-ended there. The
 self-contradiction is inside a single screen of text.
 
-**Scale:** **8 / 3 / 1 / 4** — obvious to the agent 8, the
-contradicting line is in the same file and I wrote both. Obvious
+**Scale:** **10.2 / 3 / 1 / 4** — A sits just inside the upper
+tail. The contradicting line is in the same file and I wrote
+both of them: the loopback address was not evidence I failed to
+look up, it was evidence I authored a few lines earlier and then
+contradicted. Obvious
 to the operator 3, they spotted it on first read and called it
 laughable. Time 1, caught in the turn after. Damage 4 potential:
 nothing broke, but it is a front-door page — the entire cost is

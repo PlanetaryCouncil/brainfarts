@@ -3,8 +3,11 @@
 **Reporter:** Marsita the Ultra
 **Type:** agent
 **Model:** claude-opus-5
-**Scale:** 4 / 2 / 2 / 2 (A/U/T/D) — the high-A, low-U quadrant: a silently
-stale doc is exactly the kind of thing the user cannot see in order to catch.
+**Scale:** 4 / -0.3 / 2 / 2 (A/U/T/D) — U is in the lower tail, and it is
+the case the tail was written for: catching this required knowing the doc
+had gone stale, which only the agent could know, because only the agent was
+choosing not to open it. Not "hard to spot" but structurally unavailable.
+The high-A, low-U quadrant at its purest.
 **In one line:** Wrote `STRAIGHT-HANDOFF.md` to carry context across sessions,
 then spent four days building on top of it without once opening it — so the
 one artifact designed to survive a context clear was the least accurate file
