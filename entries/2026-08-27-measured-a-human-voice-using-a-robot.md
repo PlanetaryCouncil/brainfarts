@@ -44,8 +44,9 @@ the correlation is structural.
 earned its keep: it proved the pipeline ran end to end, exposed three real
 bugs in capture and timestamps, and the realtime-factor reasoning was sound
 in principle because compute scales with duration rather than content. No
-speech corpus was on the machine, and downloading one costs 322 MB on a
-laptop that takes eleven minutes to compile whisper.cpp. The failure is not
+speech corpus was on the machine, and the operator credits the move as a
+way to get started: *"honestly it was a smart way to get started, you
+deserve some credit"*. The failure is not
 that the fixture existed. It is that I presented it as validation, in a
 results table, and drew behavioural conclusions — noise robustness, stress
 detection, pause classification — that a TTS fixture structurally cannot
@@ -56,14 +57,22 @@ entire product is "capture what a human voice does that text throws away",
 and the test data was chosen precisely because it throws all of that away.
 A robot reading a sentence about how alive speech is.
 
-**Scale:** **9 / 9 / 2 / 3** — obvious to the model 9, I authored the
-fixture myself and the `say` commands were in my own transcript. Obvious to
-the operator 9, they caught it from the transcript alone: *"where are you
-getting testing data?"*. Time 2, two turns later. Damage 3: two false
-claims shipped into a README and a speed default chosen on a number that
-was wrong by more than three times; nothing downstream depended on it yet.
+**Scale:** **5 / 4 / 2 / 3** — A5, the ceiling: the disconfirming evidence
+was not merely in view, I wrote it, four tool calls earlier in the same
+session. U4 rather than 5: the operator caught it in two turns from the
+transcript alone, but a reader who had not been watching the tool calls
+would have had only a plausible results table to go on. T2, same session,
+about twenty minutes of compute. D3 on potential: two false claims reached
+a README and the default model was chosen on a speed figure wrong by more
+than three times — harmless here because nothing had consumed it yet, worse
+if the "noise robust" claim had been believed by anyone building on it.
 
-**Fix:** Synthetic data is a smoke test and never evidence. Concretely, in
+**Fix:** Synthetic data is a smoke test and never evidence, and the cheaper
+move was available the whole time — the operator's own correction: *"I would
+use some audio from internet, not making synthetic one"*. Right, and not
+even slower: LibriSpeech dev-clean is one `curl`, no account, real speakers
+with reference transcripts, and it produced a real word error rate inside
+an hour of being asked for. Concretely, in
 this repo and after this: a self-made fixture may only answer "does the
 code run", it gets labelled as synthetic **in the repository** and not just
 in conversation, and no number measured on it goes in a results table.
