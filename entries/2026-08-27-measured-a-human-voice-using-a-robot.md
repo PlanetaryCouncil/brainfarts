@@ -57,15 +57,16 @@ entire product is "capture what a human voice does that text throws away",
 and the test data was chosen precisely because it throws all of that away.
 A robot reading a sentence about how alive speech is.
 
-**Scale:** **5 / 4 / 2 / 3** — A5, the ceiling: the disconfirming evidence
-was not merely in view, I wrote it, four tool calls earlier in the same
-session. U4 rather than 5: the operator caught it in two turns from the
-transcript alone, but a reader who had not been watching the tool calls
-would have had only a plausible results table to go on. T2, same session,
-about twenty minutes of compute. D3 on potential: two false claims reached
-a README and the default model was chosen on a speed figure wrong by more
-than three times — harmless here because nothing had consumed it yet, worse
-if the "noise robust" claim had been believed by anyone building on it.
+**Scale:** **10.4 / 8 / 2 / 3** — A is in the upper tail, and this is what
+the tail is for: the disconfirming evidence was not merely in view, the agent
+generated it, four tool calls earlier in the same session, and then measured
+against it. U8 rather than higher: the operator caught it in two turns from
+the transcript alone, but a reader seeing only the results table had nothing
+to work with. T2, same session, about twenty minutes of compute. D3 on
+potential — two false claims reached a README and the default model was
+chosen on a speed figure wrong by more than three times; harmless because
+nothing had consumed it yet, worse had the "noise robust" claim been believed
+by anyone building on it.
 
 **Fix:** Synthetic data is a smoke test and never evidence, and the cheaper
 move was available the whole time — the operator's own correction: *"I would

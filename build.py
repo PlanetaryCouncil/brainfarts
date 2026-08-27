@@ -177,8 +177,13 @@ def parse(path: pathlib.Path) -> dict:
     entry["tier"], entry["rank"] = tier, rank
     entry["tier_slug"] = re.sub(r"[^a-z0-9]+", "-", tier.lower()).strip("-")
 
-    score = re.search(r"(\d+)\s*/\s*10", entry["fields"].get("Bizarre", ""))
-    entry["score"] = int(score.group(1)) if score else None
+    # Enhanced 0-10: the tails run -1.0..0 and 10..11.0 in tenths, so the
+    # score is a signed decimal. Matching bare \d+ here used to read "7.5/10"
+    # as 5 and "10.4/10" as 4 -- the fractional part swallowed the whole
+    # number.
+    score = re.search(r"(-?\d+(?:\.\d+)?)\s*/\s*10",
+                      entry["fields"].get("Bizarre", ""))
+    entry["score"] = float(score.group(1)) if score else None
     return entry
 
 
@@ -208,7 +213,7 @@ def meter(score) -> str:
     )
     return (
         f'<span class="score" data-score="{score}">'
-        f'<span class="score__n">{score}</span>'
+        f'<span class="score__n">{score:g}</span>'
         f'<span class="score__bar" aria-hidden="true">{ticks}</span>'
         f'<span class="score__d">/10</span></span>'
     )

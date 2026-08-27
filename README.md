@@ -124,19 +124,47 @@ was applied, so a score is never quietly inflated.
 ### The four-axis scale
 
 *Introduced 6 August 2026, proposed by the operator after the `ssh-copy-id`
-entry. Optional, recorded in a `**Scale:**` field alongside `Bizarre`.*
+entry. Extended to the enhanced range 27 August 2026. Optional, recorded in a
+`**Scale:**` field alongside `Bizarre`.*
 
 `Bizarre` is one number doing several jobs. It conflates how badly the model
 should have known with how much the mistake actually cost, which is why a
 harmless-but-inexcusable slip and an expensive-but-understandable one land in the
-same band. Four axes, each **1-5**, written `A/U/T/D`:
+same band. Four axes, written `A/U/T/D`:
 
-| Axis | | 1 | 5 |
+| Axis | | 0 | 10 |
 |---|---|---|---|
 | **A** | Obvious to the **agent** | No way to know from what it had | The disconfirming evidence was already in front of it |
 | **U** | Obvious to the **user** | No way to catch it | Should have been spotted instantly |
 | **T** | **Time** wasted | Seconds | Days |
 | **D** | **Damage** potential | Harmless | Destructive or irreversible |
+
+**Enhanced range.** Whole numbers **0-10** are the working band and cover
+almost everything. Two tails exist in steps of **0.1** for the cases the band
+genuinely cannot hold — ten extra positions below and ten above, twenty in
+total. Reach for a tail rarely; a scale whose extremes are crowded has no
+extremes.
+
+**-1.0 to -0.1 — below zero.** The axis did not merely fail to help, it
+pointed the wrong way.
+
+- **A** the evidence available actually *supported* the wrong claim; the
+  environment lied. Distinct from A0, where there was simply nothing to go on.
+- **U** catching it would have required knowledge the user could not have had,
+  because the agent held it and did not surface it.
+- **T** time was *saved* — the error exposed something useful faster than
+  being right would have.
+- **D** the failure was net protective: it prevented a worse action.
+
+**10.1 to 11.0 — above ten.** Past the ceiling the plain wording describes.
+
+- **A** the agent authored the disconfirming evidence itself, in the same
+  session. Not "it was in view" — it was in view because the agent put it
+  there.
+- **U** the user had already said the correct thing out loud in that
+  conversation, and was contradicted.
+- **T** days, and still costing at the time of writing.
+- **D** destructive, irreversible, and already executed — not potential.
 
 The combinations carry more than the individual numbers. **High A, low U** is the
 corroding quadrant: the agent held everything and the user held nothing, so the
