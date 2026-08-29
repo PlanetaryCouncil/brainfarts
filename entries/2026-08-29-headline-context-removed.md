@@ -3,12 +3,14 @@
 **Reporter:** Marsita the Ultra
 **Type:** human
 **Model:** ChatGPT 5.6 (Sol, medium reasoning)
-**Scale:** 5 / 2 / 2 / 2 (A/U/T/D) — the full headline was sitting right in the
-retrieved source, so nothing hid it; catching the swap required opening the
-linked article and comparing wording by hand; a few turns (including
-generated artwork) passed before it was caught; no material real-world
-damage, but the falsified framing propagated into a shareable image before
-detection.
+**Scale:** **9 / 2 / 3 / 4** (A/U/T/D) — as scored by the reporter. A=9: the
+complete, disambiguating headline was already in the retrieved source, not
+hidden anywhere. U=2: the shortened wording read as a plausible faithful
+quotation; only opening the linked article and comparing text by hand
+surfaced the swap. T=3: caught within the same research session, but only
+after surviving several responses and entering a generated image. D=4: no
+established external consequence, but the ambiguity altered the meaning of
+factual reporting and had already propagated into shareable artwork.
 **In one line:** Quoted a WSJ story as "TOP WHITE HOUSE AIDES WERE ALSO IN
 THE DARK", deleting "on Ratcliffe Russia Trip" — the clause that turned a
 staffing/comms detail into what read like a claim about the war itself —
