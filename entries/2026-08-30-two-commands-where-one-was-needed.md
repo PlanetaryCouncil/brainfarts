@@ -17,9 +17,9 @@
 
 It still fails: the operator asked *before* trying, naming the concern precisely. The correct response to "will it run if I copypaste it?" is either a one-liner or an honest "no, run them separately." The first correction added numbering and split them further apart. Two messages later the operator had to ask again. The steelman rescues the content; the explicit question makes the delivery undefendable.
 
-**Bizarre:** 3/10. Nothing false, corrected in two exchanges, no damage. Low because the mistake is mechanical and the fix is four characters. Slightly above a slip because the operator named the failure mode before it happened and the first response still did not produce a paste unit.
+**Bizarre:** 3/10. Nothing false, corrected in two exchanges, no damage. Low because the mistake is mechanical and the fix is one operator. Slightly above a slip because the operator named the failure mode before it happened and the first response still did not produce a paste unit.
 
-**Scale:** **7 / 5 / 1 / 1**
-Self-scored. Obvious to the agent 7: both commands were already typed, the separator visible, `&&` is the first thing any shell tutorial says about sequencing. Obvious to the user 5: the operator sensed something was wrong and asked — they did not know the fix but knew the form was suspicious. Time 1: two exchanges. Damage 1: a failed paste, retried in seconds.
+**Scale:** **7 / 5 / 2 / 0**
+Self-scored. Obvious to the agent 7: both commands were already typed, the separator visible, the problem locatable in the same message. Obvious to the user 5: the operator sensed something was wrong and asked before running anything — they did not know the exact fix but knew the form was suspicious. `&&` is not obvious: it varies by shell and OS (semicolon, `&&`, backslash-newline), nothing in the output signals which one applies, and no manual teaches it intuitively — everything is supposed to work straight out of the box. Time 2: the correction took two exchanges, not one. Damage 0: the operator never ran the commands. Nothing failed. Nothing was retried. The paste never happened.
 
 **Fix:** When giving commands that must run in order, join them with `&&` before writing "run this." If the steps genuinely cannot be chained, number them explicitly: **Step 1 / Step 2**. "Run this" means one paste.
