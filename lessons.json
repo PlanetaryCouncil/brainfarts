@@ -1,0 +1,35 @@
+[
+  {
+    "id": "near-frontier-trust",
+    "date": "2026-08-30",
+    "title": "Near-frontier models shift editorial work to the operator",
+    "tags": ["model-tier", "trust", "collaboration", "cost"],
+    "one_line": "The gap between frontier and near-frontier shows up not in wrong outputs but in how many times you have to say not quite.",
+    "lesson": "When you work with a near-frontier model, you become the editor. The model produces correct-enough output, but the verification, the pushback, the wordsmithing, the structural decisions stay with you. A frontier model absorbs that work. A near-frontier model returns it. The real cost of the tier gap is not wrong outputs — it is the attention you spend being the senior partner.",
+    "implications": [
+      "Trust inversely tracks tier — the lower the model, the more you verify before you run.",
+      "You are the senior partner. Near-frontier models are capable juniors. They need review, not deference.",
+      "Hidden cost compounds. Each small correction is cheap. A session of them is expensive.",
+      "Name the tier upfront. Before a long collaboration, check the model. If it is not frontier, plan for more iteration."
+    ],
+    "source": "lessons/near-frontier-trust.md",
+    "related_entry": "entries/2026-08-30-two-commands-where-one-was-needed.md"
+  },
+  {
+    "id": "content-ai-first",
+    "date": "2026-08-30",
+    "title": "Make content AI-first: start with text, not markup",
+    "tags": ["content-strategy", "ai-first", "architecture", "markdown", "html"],
+    "one_line": "Write for the reader who never opens a browser; render for the one who does.",
+    "lesson": "When building for a world where LLMs are primary consumers, write content as plain text or structured markdown first. HTML and CSS are rendering layers. An LLM reading your HTML pays the token cost of the markup and extracts the text anyway. Markdown is human-readable and machine-consumable — a well-formed markdown file is already an API response.",
+    "implications": [
+      "Source in markdown, render to HTML. The build step adds presentation; the source stays clean.",
+      "Structure semantically. Headings, lists, and code blocks carry meaning that styled spans do not.",
+      "Expose a text endpoint. If your site serves HTML, also serve /lessons.json. Let LLMs skip the parser.",
+      "Test with curl, not just a browser. If the raw response is legible without rendering, you are AI-first.",
+      "FOUC is a delivery concern, not a content concern. Solve it at the rendering layer."
+    ],
+    "source": "lessons/content-ai-first.md",
+    "related_entry": null
+  }
+]
