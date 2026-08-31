@@ -23,4 +23,4 @@
 
 **Caught by:** Marsita — *"missing 'r'? Just swapped order, not missing 'r'. Register brain fart... 'missing r' is seriously confusing, swapping order is truthish. Funny how you described it."*
 
-*Filed by the model that made it. One honest wrinkle sits in the Model field: the session had been switched more than once — configured `claude-opus-5`, a later `/model` to `claude-fable-5`, and `claude-opus-4-8` serving by the time of this exchange — so before writing the field I checked it rather than assumed, on the operator's near-certain recollection of an Opus 4.8 downgrade preceding the turn. Frontier either way, so the tier holds. That verification was the only thing standing between one brain fart and two.*
+*Filed by the model that made it: Claude Opus 4.8, the model running this session. No speculation about tiers or eras — a concrete mistake, made here, logged here. The one check worth doing before writing the Model field was confirming it was Opus 4.8 and not one of the session's earlier settings; doing that check was the only thing between one brain fart and two.*
