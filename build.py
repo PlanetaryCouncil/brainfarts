@@ -30,6 +30,7 @@ FIELD_ORDER = ["Claimed", "Actually", "The tell", "Shape", "Steelman", "Bizarre"
 TIERS = {
     "claude-opus-5":       ("frontier", 3),
     "claude-fable-5":      ("frontier", 3),
+    "claude-opus-4-8":     ("frontier", 3),
     "claude-sonnet-5":     ("near-frontier", 2),
     "claude-sonnet-4-6":   ("near-frontier", 2),
     "claude-haiku-4-5":    ("small", 1),
