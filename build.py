@@ -401,6 +401,10 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-o
   letter-spacing:.11em; text-transform:uppercase; font-size:.62rem;
 }
 .badge--agent{border-color:var(--accent); color:var(--accent);}
+/* Not every entry is a mistake. A quirk is the software behaving as
+   designed in a way nobody would guess -- worth writing down for the
+   same reason as an error, and mislabelled as one. */
+.badge--quirk{border-color:var(--amber,#c58c2b); color:var(--amber,#c58c2b);}
 .entry__perma{margin-left:auto; color:var(--muted); text-decoration:none; opacity:0; transition:opacity .12s;}
 .entry:hover .entry__perma,.entry__perma:focus-visible{opacity:1;}
 .entry__title{
