@@ -60,6 +60,10 @@ def inline(text: str) -> str:
     out = re.sub(r"\*\*\*(.+?)\*\*\*", r"<strong><em>\1</em></strong>", out, flags=re.S)
     out = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out, flags=re.S)
     out = re.sub(r"(?<!\*)\*(?!\s)(.+?)(?<!\s)\*(?!\*)", r"<em>\1</em>", out, flags=re.S)
+    # Images before links: the link pattern would otherwise swallow the alt
+    # text and leave a stray "!" in front of an anchor.
+    out = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)",
+                 r'<img src="\2" alt="\1" loading="lazy">', out)
     out = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', out)
     return re.sub(r"\x00(\d+)\x00", lambda m: slots[int(m.group(1))], out)
 
@@ -264,6 +268,10 @@ body{
   -webkit-font-smoothing:antialiased; font-synthesis-weight:none;
 }
 .wrap{max-width:var(--measure); margin:0 auto; padding:0 1.5rem;}
+/* Screenshots. An entry that quotes a claim the terminal already disproved
+   should be able to show the terminal. */
+.field__body img{max-width:100%; height:auto; display:block;
+  margin:1rem 0; border:1px solid var(--rule, #d8d3c8); border-radius:4px;}
 /* The pill grid is the one thing on the page that wants width. Reading measure
    governs everything else, so the wide rail is opt-in rather than the default. */
 .wrap--wide{max-width:64rem;}
