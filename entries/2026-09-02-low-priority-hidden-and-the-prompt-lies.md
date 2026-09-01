@@ -46,6 +46,22 @@ lying."*
 They are right, and the correct entry holds both halves: keep it out of the
 suggestion list, and stop claiming no command matches when one does.
 
+**What the two machines actually showed, since the entry now depends on it.**
+The "Unknown command: /low-priority" screenshot came from a *different*
+session — the NUC, over ssh, on an older build. That one is not a bug at all;
+the command genuinely did not exist there yet. On the laptop, one single
+process both refused to autocomplete the command and then ran it. Versions on
+disk when this was written:
+
+    gaia  claude 2.1.257
+    nuc   claude 2.1.248
+
+What I cannot tell from here is whether the laptop's behaviour is deliberate
+hiding or a stale autocomplete index left over from an in-place update — the
+session had "Update installed · Restart to update" showing at the time. Both
+explanations fit what was seen. The entry keeps the observation and drops the
+verdict, which is what should have happened in the first draft and the second.
+
 **A note on how this entry got written wrong first.** I filed it as a bug, was
 told it was a feature, and swung all the way to feature — writing a paragraph
 about how the behaviour "is correct" and is "not worth changing". That
