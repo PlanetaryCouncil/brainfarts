@@ -28,8 +28,18 @@ opened Namecheap and screenshotted the list:
 `barclays5`, `binface`, `binfacepress`, `map`, `sahara`, `trumpisms`, `vote`,
 `warcrimes` — eight records missed. Not obscure infrastructure names. The
 names of their own projects, which no wordlist on earth contains, because
-they are jokes and campaigns and one-offs that exist nowhere except in this
-person's head and their DNS panel.
+they are jokes and campaigns and one-offs that nobody else would think to
+type.
+
+The operator read that sentence in its first draft, where it ended "...exist
+nowhere except in this person's head and their DNS panel", and pointed out
+that they are **public URLs** — live sites, served over HTTPS, indexed,
+linked. Which is not a small correction inside this particular entry: it is
+the reason Certificate Transparency knows about them. Every one of those
+names is published, by design, in a log built to be read. Calling them
+private was the same mistake as guessing them — treating a retrievable fact
+as an unreachable one — committed in the sentence explaining why guessing
+was wrong.
 
 **The tell:** I described my own method accurately while doing it —
 *"probing can only find names I think to guess"* — and then presented its

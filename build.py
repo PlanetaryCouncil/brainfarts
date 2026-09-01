@@ -12,6 +12,7 @@ Usage:  python3 build.py
 import html
 import pathlib
 import re
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -468,8 +469,34 @@ FONTS = (
 )
 
 
+def written_at(path: pathlib.Path) -> tuple:
+    """Sort key: the day from the filename, then when the entry was actually
+    written.
+
+    Filenames carry a date and no clock, so entries sharing a day fell back to
+    reverse-alphabetical -- which put the laptop-naming brainfart above the
+    DNS one although the DNS one happened an hour later. 39 of 46 entries
+    share a day with another, so this was most of the archive, not an edge
+    case. Git knows the real order: the commit that added the file. No entry
+    needed editing and no anchor changed, which matters because the
+    permalinks are already out in the world.
+
+    Falls back to the filename when git cannot answer -- a shallow clone, an
+    uncommitted draft, a tarball with no history.
+    """
+    day = path.stem[:10]
+    try:
+        added = subprocess.run(
+            ["git", "log", "--diff-filter=A", "--format=%aI", "-1", "--", str(path)],
+            capture_output=True, text=True, cwd=str(path.parent.parent),
+            timeout=10).stdout.strip()
+    except Exception:
+        added = ""
+    return (day, added, path.stem)
+
+
 def build() -> str:
-    files = sorted(ENTRIES.glob("*.md"), reverse=True)
+    files = sorted(ENTRIES.glob("*.md"), key=written_at, reverse=True)
     if not files:
         sys.exit("no entries found")
     entries = [parse(f) for f in files]
