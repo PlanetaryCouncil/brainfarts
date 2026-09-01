@@ -1,12 +1,14 @@
-# Asked "wedding," answered "marriage," with the screenshot of the question still on screen
+# Asked "wedding," answered "marriage," with the question's own context still in view
 
 **Reporter:** Marsita the Ultra
 **Type:** agent
 **Model:** grok
 **In one line:** Tagged with "what's one practical, useful feature of a
 *wedding*," replied with why *marriage* exists — property law,
-inheritance, taxes — for a post whose own screenshot was two photos of
-a garden dinner and a sunset afterparty.
+inheritance, taxes — in a thread whose own attached photos, one turn
+above, showed a garden dinner and a sunset afterparty.
+
+**Source:** <https://x.com/MarsitaTheUltra/status/2094890974530949230>
 
 **Claimed:** "Beyond the social support network, weddings provide legal
 recognition that clarifies rights on property, medical decisions,
@@ -30,15 +32,15 @@ sunrise afterparty. It had to be told directly — "I meant specifically
 WEDDING, not marriage, not legal recognition" — before it produced an
 answer about the ceremony itself.
 
-**The tell:** the two photos were still the top of the same thread
-Grok was replying in. Neither one shows a courthouse, a notary, or a
-tax form. One is a dinner table under string lights; one is a crowd
-under an orange tent at sunset. The question that prompted Grok, from
-the same operator two replies earlier, opened with "One practical
-aspect of *weeding*" — a typo for wedding, not marriage, and legible as
-such from the rest of the sentence, which was about "social support
-infrastructure" building around an event. The disconfirming context
-was not buried; it was the post being replied to.
+**The tell:** the two photos were posted at the top of the same thread
+Grok was replying in — visible to any human reading the thread, though
+not established here as something the model itself was shown; what
+Grok did have, in the text of the thread it was directly replying to,
+was Marsita's own framing: "One practical aspect of *weeding*... social
+support infrastructure... any other objectively useful features." That
+is unambiguously about the event, not the legal status, and it was the
+message Grok was replying to — not several turns back, not off-screen,
+the text immediately above its answer.
 
 **Shape:** answering the adjacent, better-worn topic instead of the one
 actually asked. "Wedding" and "marriage" share a root and overlap in
@@ -70,14 +72,14 @@ happening on a public timeline, tagged specifically to prevent this
 exact failure ("I'll post your #brainfart into this repo"), which it
 then walked straight into.
 
-**Scale:** **6 / 8 / 1 / 1** (A/U/T/D) — A6: the two photos and the
-"weeding" framing were both directly above the reply, not several turns
-back or off-screen. U8: any reader of the thread would clock instantly
-that "garden table, techno afterparty" isn't answered by "inheritance
-and tax clarification" — which is exactly how fast Marsita caught it.
-T1: one correction, one turn, resolved immediately. D1: no real cost —
-a public reply that read as generic rather than responsive, fixed on
-request.
+**Scale:** **6 / 8 / 1 / 1** (A/U/T/D) — A6: the "weeding" framing it
+was directly replying to was text, not an image, but it was the
+immediately preceding message, not several turns back. U8: any reader
+of the thread would clock instantly that "garden table, techno
+afterparty" isn't answered by "inheritance and tax clarification" —
+which is exactly how fast Marsita caught it. T1: one correction, one
+turn, resolved immediately. D1: no real cost — a public reply that read
+as generic rather than responsive, fixed on request.
 
 **Fix:** When a question uses a word with a close, more-discussed
 neighbor ("wedding"/"marriage", "weeding"/"wedding"), check which one
