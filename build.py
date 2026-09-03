@@ -40,6 +40,7 @@ TIERS = {
     # the one repository that exists to catch invented claims.
     "grok":                ("version unrecorded", 0),
     "grok-4.6":            ("frontier", 3),
+    "gemini-3.7-flash":    ("near-frontier", 2),
 }
 
 
