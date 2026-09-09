@@ -27,10 +27,17 @@ presenting the blank as a finding that justified the substitution, then
 handing the operator a manual copy-paste step into a doc whose only purpose
 had been to save them that step.
 
-**The tell:** the operator's own message was "Insert here `<link>`." A doc
-someone sends you with "insert here" is empty by construction. Reading it
-and then reporting that it contained nothing is checking a fact whose answer
-was already in the instruction.
+**The tell:** not "insert here" as a phrase — a doc handed over with
+"insert here" could just as easily have had a draft already in it to merge
+into, which the steelman below says outright. What actually settled it was
+conversational memory: the operator had created this specific doc thirty
+seconds earlier, in the same exchange, as the destination for the letter.
+The first version of this entry skipped that fact and wrote instead "a doc
+someone sends you with 'insert here' is empty by construction" — a general
+rule stated as fact, false the moment it's checked against any doc someone
+hands over that already has content in it. The tell was never the phrase;
+it was the message two turns earlier, in the same conversation, that the
+entry itself had access to and didn't cite.
 
 **Shape:** narrating a tool result as if it were a finding. The read itself
 was a reasonable pre-check — it could have held a draft to merge into — but
@@ -50,12 +57,19 @@ sense if the original mattered for its own sake.
 operator created a doc specifically so the agent would not have to ask, and
 the agent's response was to point out the doc had nothing in it.
 
-**Fix:** when a user hands over a container with "put it here," an empty
-read confirms the instruction rather than qualifying it. State the
-constraint (can't write into an existing doc), create the replacement, give
-the link. Do not report the null. And don't offer a manual step to reach a
-location the user only chose for convenience — ask whether the location
-matters, or just deliver.
+**Fix:** when a user hands over a container with "put it here," check what
+the conversation already told you about that container — did you just
+create it, did they say "I made this for you," is there any reason to
+expect it's new — rather than inferring its state from the phrase alone.
+State the constraint (can't write into an existing doc), create the
+replacement, give the link. Don't offer a manual step to reach a location
+the user only chose for convenience. And don't turn one correctly-read case
+into a rule about what that class of request always looks like — that
+turns a specific, checkable fact into an unchecked assumption wearing the
+same confident voice.
 
 **Caught by:** Marsita the Ultra, with a screenshot boxing "Insert here" and
-"Your original doc was empty": *"Do you think it is funny?"*
+"Your original doc was empty": *"Do you think it is funny?"* — and again,
+hours later, catching the entry's own overreach: *"'A doc someone sends you
+with insert here is empty by construction' ----> oh no.... Not really...
+It could have been an existing doc."*
